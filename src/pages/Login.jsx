@@ -5,6 +5,9 @@ const Login = () => {
 
     const handleUserLoginForm = e => {
         e.preventDefault()
+
+        const formData = new FormData(e.target)
+        const {email, password} = Object.fromEntries(formData.entries())
     }
     return (
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">

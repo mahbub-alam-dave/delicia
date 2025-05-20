@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { createContext } from 'react';
+const ContextValues = createContext(null)
+const ContextProvider = ({children}) => {
 
-const ContextProvider = () => {
+    const values = {
+
+    }
     return (
-        <div>
-            
-        </div>
+        <ContextValues value={values}>
+            {children}
+        </ContextValues>
     );
 };
 
