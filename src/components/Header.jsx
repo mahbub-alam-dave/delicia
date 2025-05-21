@@ -1,17 +1,71 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router';
 import { CiMenuFries } from "react-icons/ci";
 import { IoMdClose } from "react-icons/io";
 
 const Header = () => {
 
-    const [displayMenu, setDisplayMenu] = useState(false)
-    const handleMenuBtn = () => {
-        setDisplayMenu(display => !display)
+  const [displayMenu, setDisplayMenu] = useState(false)
+  const [displayHeader, setDisplayHeader] =useState(true)
+  const [triggeredAction, setTriggeredAction] = useState(false)
+const handleMenuBtn = () => {
+    setDisplayMenu(display => !display)
+}
+
+
+useEffect(()=>{
+  let stopTimeout;
+  
+  const handleScrollTop = () => {
+    const scrollTop = window.scrollY
+    
+    if(scrollTop === 0) {
+      setTriggeredAction(false)
+      setDisplayHeader(true)
     }
+
+    if(scrollTop > 0 && !triggeredAction) {
+      setTriggeredAction(true)
+      setDisplayHeader(false)
+
+      clearTimeout(stopTimeout);
+
+      stopTimeout = setTimeout(() =>{
+        setDisplayHeader(true)
+      }, 500)
+    }
+  }
+  window.addEventListener('scroll', handleScrollTop)
+  return () => {
+    window.removeEventListener('scroll', handleScrollTop)
+    clearTimeout(stopTimeout)
+  }
+}, [triggeredAction])
+
+
+/* const header = document.querySelector(".header");
+let actionTriggered = false;
+let hideTimeout; */
+
+/* window.addEventListener("scroll", () => {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  if (scrollTop === 0) {
+    actionTriggered = false;
+  }
+  if (scrollTop > 0 && !actionTriggered) {
+    actionTriggered = true;
+    header.style.top = "-100px";
+  clearTimeout(hideTimeout);
+  hideTimeout = setTimeout(() => {
+    header.style.top = "0";
+  }, 700);
+  }
+}); */
+
+
     return ( 
-        <div className='border-b border-[rgba(163,163,163,0.44)]'>
-        <div className='p-4 max-w-11/12 mx-auto flex justify-between items-center '>
+        <div className={`${displayHeader ? "top-[-100px]" : "top-0"} border-b border-[rgba(163,163,163,0.44)] sticky z-1000 header transition-all duration-400 ease-in-out`}>
+        <div className='p-4 max-w-11/12 mx-auto flex justify-between items-center bg-white '>
             <div className='flex gap-2 items-center'>
                 <img src="https://i.ibb.co/xtwSqrXY/delicia-logo.png" alt="" />
                 <h2 className='rancho text-3xl font-bold'>delicia</h2>
@@ -20,6 +74,7 @@ const Header = () => {
             <nav className='hidden lg:flex gap-4 lg:gap-6 '>
                 <NavLink to={'/'} className='font-semibold text-base'><span>Home</span></NavLink>
                 <NavLink to={'/all-recipes'} className='font-semibold text-base'><span>All recipe</span></NavLink>
+                <NavLink to={'/add-recipe'} className='font-semibold text-base'><span>Add recipe</span></NavLink>
             </nav>
 
             <div className='flex gap-4 items-center'>
@@ -34,6 +89,8 @@ const Header = () => {
                 <IoMdClose size={22}/>
                 <NavLink to={'/'} className='font-semibold text-base'><span>Home</span></NavLink>
                 <NavLink to={'/all-recipes'} className='font-semibold text-base'><span>All recipe</span></NavLink> 
+                <NavLink to={'/add-recipe'} className='font-semibold text-base'><span>Add recipe</span></NavLink>
+
                 </div>
             </div>
 

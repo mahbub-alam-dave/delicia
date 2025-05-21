@@ -7,6 +7,11 @@ import Home from './pages/Home.jsx'
 import Login from './pages/Login.jsx'
 import Register from './pages/Register.jsx'
 import AllRecipes from './pages/AllRecipes.jsx'
+import NotFound from './pages/NotFound.jsx'
+import PrivateRoutes from './pages/PrivateRoutes.jsx'
+import AddRecipe from './pages/AddRecipe.jsx'
+import ContextProvider from './contexts/ContextProvider.jsx'
+import RecipeDetails from './pages/RecipeDetails.jsx'
 
 const router = createBrowserRouter([
   {
@@ -28,12 +33,27 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register />
+      },
+      {
+        path: "add-recipe",
+        element: <PrivateRoutes> <AddRecipe /></PrivateRoutes>
+      },
+      {
+        path: "recipe-details/:id",
+        element: <PrivateRoutes> <RecipeDetails /> </PrivateRoutes>
       }
+
     ]
+  },
+  {
+        path: '*',
+        element: <NotFound />
   }
 ])
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <ContextProvider>
+      <RouterProvider router={router} />
+    </ContextProvider>
   </StrictMode>,
 )
