@@ -6,7 +6,7 @@ import { ContextValues } from "../contexts/ContextProvider";
 import Swal from "sweetalert2";
 
 const Header = () => {
-  const { logOutUser, user } = useContext(ContextValues);
+  const { logOutUser, user, setUser } = useContext(ContextValues);
 
   const [displayMenu, setDisplayMenu] = useState(false);
   const [showUserInfo, setShowUserInfo] = useState(false);
@@ -69,6 +69,7 @@ let hideTimeout; */
     logOutUser()
       .then(() => {
         // user logged out successfully
+        setUser(null)
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -88,8 +89,9 @@ let hideTimeout; */
       });
   };
 
-  const navItems = (
-    user ? 
+  const getNavItems = () => {
+    return user ? (
+     
     <div
       onClick={() => setShowUserInfo((userInfo) => !userInfo)}
       className="relative"
@@ -105,25 +107,27 @@ let hideTimeout; */
         </h2>
         <button
           onClick={handleLogOutUser}
-          className="btn bg-[#ff3539] text-white text-sm"
+          className="btn btn-sm bg-[#ff3539] text-white text-sm"
         >
           Logout
         </button>
       </div>
       <img
         src={
-          user.photoURL ? user.photoURL : "https://i.ibb.co/FLrrTVtL/man.png"
+          user?.photoURL ? user.photoURL : "https://i.ibb.co/FLrrTVtL/man.png"
         }
-        alt={user.displayName}
+        alt={user?.displayName}
         className="w-12 h-12 object-cover rounded-[50%]"
       />
     </div>
-   : 
+    )
+   : (
     <div className="flex gap-2">
     <Link to={'/login'}><button className='btn bg-[#ff3539] text-lg font-semibold text-white'>Login</button></Link>
     <Link to={'/register'}><button className='btn text-lg font-semibold'>Register</button></Link>
     </div>
-  );
+      
+  )};
 
   return (
     <div
@@ -150,7 +154,7 @@ let hideTimeout; */
         </nav>
 
         <div className="flex gap-4 items-center">
-          <div className="hidden md:block">{navItems}</div>
+          <div className="hidden md:block">{getNavItems()}</div>
           <CiMenuFries
             onClick={handleMenuBtn}
             className="text-3xl font-bold block lg:hidden"
@@ -187,7 +191,7 @@ let hideTimeout; */
             >
               <span>Add recipe</span>
             </NavLink>
-            <div className="md:hidden">{navItems}</div>
+            <div className="md:hidden">{getNavItems()}</div>
           </div>
         </div>
       </div>
