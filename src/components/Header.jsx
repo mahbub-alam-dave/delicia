@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 const Header = () => {
   const { logOutUser, user, setUser } = useContext(ContextValues);
 
+
   const [displayMenu, setDisplayMenu] = useState(false);
   const [showUserInfo, setShowUserInfo] = useState(false);
 
@@ -94,7 +95,7 @@ let hideTimeout; */
      
     <div
       onClick={() => setShowUserInfo((userInfo) => !userInfo)}
-      className="relative"
+      className="relative cursor-pointer"
     >
       <div
         className={`bg-white shadow p-2 ${

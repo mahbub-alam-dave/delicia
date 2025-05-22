@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 const Login = () => {
   
-  const { loginUser } = useContext(ContextValues);
+  const { loginUser, loginWithGoogle } = useContext(ContextValues);
   const navigate = useNavigate()
 
   const handleUserLoginForm = (e) => {
@@ -39,6 +39,31 @@ const Login = () => {
         });
       });
   };
+
+  const handleGoogleSignIn = () => {
+    loginWithGoogle()
+    .then(() => {
+      // successfully logged in with google
+      Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "User successfully logged in with google",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        // navigate user to desired page
+        navigate('/')
+    })
+    .catch(error => {
+      Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: `${error}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+    })
+  }
   return (
     <div className="card bg-base-100 w-full max-w-md shrink-0 shadow-2xl mx-auto my-12">
       <div className="card-body">
@@ -71,7 +96,7 @@ const Login = () => {
         </p>
         <div className="flex gap-2 items-center">
           <span>or, Login with your</span>
-          <FcGoogle size={22} />
+          <FcGoogle onClick={handleGoogleSignIn} size={24} className="cursor-pointer" />
           <span>account</span>
         </div>
       </div>

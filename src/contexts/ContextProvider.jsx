@@ -1,8 +1,10 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { auth } from '../firebase/firebase.config';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 
 export const ContextValues = createContext(null)
+
+const provider = new GoogleAuthProvider();
 
 const ContextProvider = ({children}) => {
     const [allRecipes, setAllRecipes] = useState([])
@@ -21,6 +23,10 @@ const ContextProvider = ({children}) => {
 
     const loginUser = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password)
+    }
+
+    const loginWithGoogle = () => {
+        return signInWithPopup(auth, provider)
     }
 
     const updateUserProfile = (userProfileData) => {
@@ -49,6 +55,7 @@ const ContextProvider = ({children}) => {
         setAllRecipes,
         registerUser,
         loginUser,
+        loginWithGoogle,
         updateUserProfile,
         user,
         setUser,
@@ -56,7 +63,7 @@ const ContextProvider = ({children}) => {
         loading
     }
 
-    console.log(user)
+    // console.log(user)
     return (
         <ContextValues value={values}>
             {children}

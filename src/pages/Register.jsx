@@ -1,13 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { FcGoogle } from "react-icons/fc";
 import { ContextValues } from "../contexts/ContextProvider";
 import Swal from "sweetalert2";
 
 const Register = () => {
-  const { user, setUser, registerUser, updateUserProfile } = useContext(ContextValues);
+  const { user, setUser, registerUser, updateUserProfile, loginWithGoogle } = useContext(ContextValues);
   const location = useLocation()
   const navigate = useNavigate()
+  const [validationError, setValidationError] = useState("")
 
   const handleUserRegisterForm = (e) => {
     e.preventDefault();
@@ -16,7 +17,22 @@ const Register = () => {
     const { email, password, ...profileData } = Object.fromEntries(
       formData.entries()
     );
+    setValidationError('')
     // register user using email and password
+
+    if(!/(?=.*[a-z])/.test(password) || !/(?=.*[A-Z])/.test(password) || !/(.{6,}$)/.test(password)) {
+        // setValidationError("Password must contain one lowercase character")
+        setValidationError("Password must be in 6 characters, with at least one uppercase and lowercase")
+        return
+        }
+        /* else if(!/(?=.*[A-Z])/.test(password)) {
+          setValidationError("Password must contain one uppercase character");
+          return
+        }
+        else if(!/(.{6,}$)/.test(password)) {
+          setValidationError("Password must be at least 6 characters long");
+          return
+        } */
     registerUser(email, password).then(() => {
       // user registered successfully
       updateUserProfile({displayName: profileData.name, photoURL: profileData.photo})
@@ -53,6 +69,31 @@ const Register = () => {
       });
     })
   };
+
+  const handleGoogleSignIn = () => {
+      loginWithGoogle()
+      .then(() => {
+        // successfully logged in with google
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "User successfully logged in with google",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          // navigate user to desired page
+          navigate('/')
+      })
+      .catch(error => {
+        Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: `${error}`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+      })
+    }
   return (
     <div className="">
       <div className="card bg-base-100 w-full max-w-md mx-auto shrink-0 shadow-2xl my-12">
@@ -88,6 +129,7 @@ const Register = () => {
               placeholder="Password"
             />
             <div>
+              <p className='text-red-500'>{validationError}</p>
               <a className="link link-hover">Forgot password?</a>
             </div>
             <button className="btn btn-neutral mt-4">Register</button>
@@ -100,7 +142,7 @@ const Register = () => {
           </p>
           <div className="flex gap-2 items-center">
             <span>or, Login with your</span>
-            <FcGoogle size={22} />
+            <FcGoogle onClick={handleGoogleSignIn} size={24} />
             <span>account</span>
           </div>
         </div>
