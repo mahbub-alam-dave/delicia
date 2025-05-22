@@ -12,6 +12,7 @@ import PrivateRoutes from './pages/PrivateRoutes.jsx'
 import AddRecipe from './pages/AddRecipe.jsx'
 import ContextProvider from './contexts/ContextProvider.jsx'
 import RecipeDetails from './pages/RecipeDetails.jsx'
+import Loader from './components/Loader.jsx'
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+        hydrateFallbackElement: <Loader />,
         loader: () => fetch('http://localhost:3000/top-recipes')
       },
       {

@@ -1,15 +1,16 @@
 import React, { useContext } from 'react';
 import { ContextValues } from '../contexts/ContextProvider';
 import Loader from '../components/Loader';
-import { Navigate } from 'react-router';
+import { Navigate, useLocation } from 'react-router';
 
 const PrivateRoutes = ({children}) => {
 
     const {user, loading} = useContext(ContextValues)
+    const location = useLocation()
     
     
     if(loading) return <Loader /> 
-    if(!user) return <Navigate to={'/login'}></Navigate>
+    if(!user) return <Navigate to={'/login'} state={location.pathname}></Navigate>
     return children
 };
 

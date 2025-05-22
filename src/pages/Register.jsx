@@ -1,12 +1,11 @@
 import React, { useContext, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { FcGoogle } from "react-icons/fc";
 import { ContextValues } from "../contexts/ContextProvider";
 import Swal from "sweetalert2";
 
 const Register = () => {
   const { user, setUser, registerUser, updateUserProfile, loginWithGoogle } = useContext(ContextValues);
-  const location = useLocation()
   const navigate = useNavigate()
   const [validationError, setValidationError] = useState("")
 

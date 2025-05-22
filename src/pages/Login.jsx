@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { FcGoogle } from "react-icons/fc";
 import { ContextValues } from "../contexts/ContextProvider";
 import Swal from "sweetalert2";
@@ -7,7 +7,8 @@ import Swal from "sweetalert2";
 const Login = () => {
   
   const { loginUser, loginWithGoogle } = useContext(ContextValues);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const location = useLocation()
 
   const handleUserLoginForm = (e) => {
     e.preventDefault();
@@ -27,7 +28,7 @@ const Login = () => {
           timer: 1500,
         });
         // navigate user to desired page
-        navigate('/')
+        navigate( location.state || '/')
       })
       .catch((error) => {
         Swal.fire({
@@ -52,7 +53,7 @@ const Login = () => {
           timer: 1500,
         });
         // navigate user to desired page
-        navigate('/')
+        navigate( location.state || '/')
     })
     .catch(error => {
       Swal.fire({
