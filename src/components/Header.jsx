@@ -88,7 +88,8 @@ let hideTimeout; */
       });
   };
 
-  const navItems = user ? (
+  const navItems = (
+    user ? 
     <div
       onClick={() => setShowUserInfo((userInfo) => !userInfo)}
       className="relative"
@@ -117,11 +118,11 @@ let hideTimeout; */
         className="w-12 h-12 object-cover rounded-[50%]"
       />
     </div>
-  ) : (
-    `
+   : 
+    <div className="flex gap-2">
     <Link to={'/login'}><button className='btn bg-[#ff3539] text-lg font-semibold text-white'>Login</button></Link>
     <Link to={'/register'}><button className='btn text-lg font-semibold'>Register</button></Link>
-    `
+    </div>
   );
 
   return (

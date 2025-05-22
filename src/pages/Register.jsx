@@ -5,7 +5,7 @@ import { ContextValues } from "../contexts/ContextProvider";
 import Swal from "sweetalert2";
 
 const Register = () => {
-  const { registerUser, updateUserProfile } = useContext(ContextValues);
+  const { user, setUser, registerUser, updateUserProfile } = useContext(ContextValues);
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -22,6 +22,7 @@ const Register = () => {
       updateUserProfile({displayName: profileData.name, photoURL: profileData.photo})
       .then(() => {
         // user profile data updated
+        setUser({...user, displayName: profileData.name, photoURL: profileData.photo})
         // navigate to desired route
       navigate('/')
       })

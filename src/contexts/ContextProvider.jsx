@@ -7,6 +7,8 @@ export const ContextValues = createContext(null)
 const ContextProvider = ({children}) => {
     const [allRecipes, setAllRecipes] = useState([])
     const [user, setUser] = useState(null)
+    const [loading, setLoading] = useState(true)
+
     useEffect(()=>{
         fetch("http://localhost:3000/recipes")
         .then(res => res.json())
@@ -29,6 +31,7 @@ const ContextProvider = ({children}) => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             if(currentUser) {
                 setUser(currentUser)
+                setLoading(false)
             }
         })
 
@@ -49,7 +52,8 @@ const ContextProvider = ({children}) => {
         updateUserProfile,
         user,
         setUser,
-        logOutUser
+        logOutUser,
+        loading
     }
 
     console.log(user)
