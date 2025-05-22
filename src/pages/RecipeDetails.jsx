@@ -27,7 +27,7 @@ const RecipeDetails = () => {
                     <span className='font-bold text-base lg:text-lg leading-[30px]'>Ingredients:</span>
                     <div className='flex flex-wrap gap-2'>
                     {
-                        recipeDetails.allIngredients?.map(ingredient => <span className='btn btn-sm text-sm'>{ingredient}</span>)
+                        recipeDetails.allIngredients?.map((ingredient, index) => <span key={index} className='btn btn-sm text-sm'>{ingredient}</span>)
                     }
                     </div>
                 </div>

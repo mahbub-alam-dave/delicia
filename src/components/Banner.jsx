@@ -10,7 +10,7 @@ import 'swiper/css/scrollbar';
 
 const Banner = () => {
     return (
-      <div className=''>
+      <div className='mt-8'>
       <Swiper
       modules={[Navigation, Pagination, Scrollbar, A11y]}
       navigation

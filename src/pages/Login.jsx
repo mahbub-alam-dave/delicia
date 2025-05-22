@@ -1,30 +1,82 @@
-import React from 'react';
-import { Link } from 'react-router';
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router";
+import { FcGoogle } from "react-icons/fc";
+import { ContextValues } from "../contexts/ContextProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
+  
+  const { loginUser } = useContext(ContextValues);
+  const navigate = useNavigate()
 
-    const handleUserLoginForm = e => {
-        e.preventDefault()
+  const handleUserLoginForm = (e) => {
+    e.preventDefault();
 
-        const formData = new FormData(e.target)
-        const {email, password} = Object.fromEntries(formData.entries())
-    }
-    return (
-    <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+    const formData = new FormData(e.target);
+    const { email, password } = Object.fromEntries(formData.entries());
+
+    // login user
+    loginUser(email, password)
+      .then(() => {
+        // user logged in successfully
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "User have logged in successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        // navigate user to desired page
+        navigate('/')
+      })
+      .catch((error) => {
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: `${error}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
+  };
+  return (
+    <div className="card bg-base-100 w-full max-w-md shrink-0 shadow-2xl mx-auto my-12">
       <div className="card-body">
-        <h1 className="text-5xl font-bold">Login now!</h1>
+        <h1 className="text-3xl text-center font-bold">Login now!</h1>
         <form onSubmit={handleUserLoginForm} className="fieldset">
           <label className="label">Email</label>
-          <input type="email" className="input" name='email' placeholder="Email" />
+          <input
+            type="email"
+            className="input w-full"
+            name="email"
+            placeholder="Email"
+          />
           <label className="label">Password</label>
-          <input type="password" className="input" name='password' placeholder="Password" />
-          <div><a className="link link-hover">Forgot password?</a></div>
+          <input
+            type="password"
+            className="input w-full"
+            name="password"
+            placeholder="Password"
+          />
+          <div>
+            <a className="link link-hover">Forgot password?</a>
+          </div>
           <button className="btn btn-neutral mt-4">Login</button>
         </form>
-        <p>Don't have an account? <Link to={'/register'} className='text-blue-500'>Register now!</Link></p>
+        <p>
+          Don't have an account?{" "}
+          <Link to={"/register"} className="text-blue-500">
+            Register now!
+          </Link>
+        </p>
+        <div className="flex gap-2 items-center">
+          <span>or, Login with your</span>
+          <FcGoogle size={22} />
+          <span>account</span>
+        </div>
       </div>
     </div>
-    );
+  );
 };
 
 export default Login;
