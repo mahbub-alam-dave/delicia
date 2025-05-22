@@ -20,7 +20,7 @@ const AddRecipe = () => {
     console.log(recipeDetails);
 
     // add recipe to database
-    fetch("http://localhost:3000/recipes", {
+    fetch("https://recipe-book-app-server-wheat.vercel.app/recipes", {
       method: "POST",
       headers: {
         "content-type": "application/json",

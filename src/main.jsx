@@ -24,7 +24,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home />,
         hydrateFallbackElement: <Loader />,
-        loader: () => fetch('http://localhost:3000/top-recipes')
+        loader: () => fetch('https://recipe-book-app-server-wheat.vercel.app/top-recipes')
       },
       {
         path: "all-recipes",

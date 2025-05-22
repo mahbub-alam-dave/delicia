@@ -12,7 +12,7 @@ const ContextProvider = ({children}) => {
     const [loading, setLoading] = useState(true)
 
     useEffect(()=>{
-        fetch("http://localhost:3000/recipes")
+        fetch("https://recipe-book-app-server-wheat.vercel.app/recipes")
         .then(res => res.json())
         .then(data => setAllRecipes(data))
     },[])
@@ -37,8 +37,8 @@ const ContextProvider = ({children}) => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             if(currentUser) {
                 setUser(currentUser)
-                setLoading(false)
             }
+            setLoading(false)
         })
 
         return () => {
