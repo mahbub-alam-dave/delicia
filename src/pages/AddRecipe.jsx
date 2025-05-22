@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Swal from "sweetalert2";
+import { ContextValues } from "../contexts/ContextProvider";
 
 const AddRecipe = () => {
+  
+  const {user} = useContext(ContextValues)
+
   const handleAddRecipeForm = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -9,7 +13,7 @@ const AddRecipe = () => {
     const allIngredients = ingredients.split(",").map(ingredient => ingredient.trim())
     // console.log(allIngredients)
     othersData.likeCount = 0;
-    othersData.author = {name: "Unknown", email: "abc@gmail.com"}
+    othersData.author = {name: user?.displayName, email: user?.email}
 
     const recipeDetails = {...othersData, allIngredients}
 
@@ -37,7 +41,7 @@ const AddRecipe = () => {
       });
   };
   return (
-    <div className="mt-8 flex justify-center items-center bg-gray-200 rounded-2xl">
+    <div className="mt-8 flex justify-center items-center bg-gray-50 rounded-2xl">
       <div className="w-full flex flex-col  gap-6 md:gap-8 lg:gap-12  p-6 sm:p-10 md:p-12 lg:p-16">
         <h2 className="rancho text-3xl font-semibold md:text-4xl text-[#ff3539] text-center">
           Add A Recipe
@@ -106,7 +110,6 @@ const AddRecipe = () => {
                 htmlFor="cuisineType"
                 className="mr-3 text-lg font-semibold"
               >
-                {" "}
                 Cuisine type
               </label>
               <select

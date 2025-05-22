@@ -13,6 +13,7 @@ import AddRecipe from './pages/AddRecipe.jsx'
 import ContextProvider from './contexts/ContextProvider.jsx'
 import RecipeDetails from './pages/RecipeDetails.jsx'
 import Loader from './components/Loader.jsx'
+import MyRecipe from './pages/MyRecipe.jsx'
 
 const router = createBrowserRouter([
   {
@@ -44,8 +45,11 @@ const router = createBrowserRouter([
       {
         path: "recipe-details/:id",
         element: <PrivateRoutes> <RecipeDetails /> </PrivateRoutes>
+      },
+      {
+        path: "my-recipes",
+        element: <PrivateRoutes> <MyRecipe /> </PrivateRoutes>
       }
-
     ]
   },
   {

@@ -5,7 +5,7 @@ import MostLikedRecipe from '../components/MostLikedRecipe';
 
 const Home = () => {
     const mostLikedRecipes = useLoaderData()
-    console.log(mostLikedRecipes)
+    // console.log(mostLikedRecipes)
     return (
         <div>
             <Banner />

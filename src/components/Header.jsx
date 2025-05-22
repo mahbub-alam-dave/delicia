@@ -129,6 +129,7 @@ let hideTimeout; */
     </div>
       
   )};
+  
 
   return (
     <div
@@ -152,6 +153,12 @@ let hideTimeout; */
           <NavLink to={"/add-recipe"} className="font-semibold text-base">
             <span>Add recipe</span>
           </NavLink>
+          {
+            user &&
+          <NavLink to={"/my-recipes"} className="font-semibold text-base">
+            <span>My Recipes</span>
+          </NavLink>
+          }
         </nav>
 
         <div className="flex gap-4 items-center">
@@ -192,6 +199,12 @@ let hideTimeout; */
             >
               <span>Add recipe</span>
             </NavLink>
+                      {
+            user &&
+          <NavLink onClick={() => setDisplayMenu((display) => !display)} to={"/my-recipes"} className="font-semibold text-base">
+            <span>My Recipes</span>
+          </NavLink>
+          }
             <div className="md:hidden">{getNavItems()}</div>
           </div>
         </div>
