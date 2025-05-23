@@ -33,7 +33,7 @@ const AddRecipe = () => {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: "Your work has been saved",
+            title: "Your recipe has been added",
             showConfirmButton: false,
             timer: 1500,
           });
@@ -150,7 +150,7 @@ const AddRecipe = () => {
               <input
                 type="text"
                 name="ingredients"
-                placeholder="Enter recipe ingredients with a space"
+                placeholder="Enter recipe ingredients with a comma"
                 className="input w-full"
               />
             </fieldset>
@@ -159,7 +159,7 @@ const AddRecipe = () => {
               <input
                 type="number"
                 name="cookingTime"
-                placeholder="Enter cooking time"
+                placeholder="Estimated cooking time"
                 className="input w-full"
               />
             </fieldset>
