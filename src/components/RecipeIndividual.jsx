@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { AiOutlineLike } from "react-icons/ai";
 import { MdModeEditOutline, MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
+import { ContextValues } from "../contexts/ContextProvider";
 
 const RecipeIndividual = ({ recipe }) => {
 
-  console.log(recipe.allIngredients)
+  const {allRecipes, setAllRecipes} = useContext(ContextValues)
   const handleUpdateMyRecipe = (e) => {
     e.preventDefault();
 
@@ -37,7 +38,7 @@ const RecipeIndividual = ({ recipe }) => {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: "User have registered successfully",
+            title: "Recipe has updated successfully",
             showConfirmButton: false,
             timer: 1500,
           });
@@ -58,6 +59,27 @@ const RecipeIndividual = ({ recipe }) => {
     const randomIndex = Math.floor(Math.random() * buttonColors.length);
     return buttonColors[randomIndex];
   };
+
+
+  const handleDeleteMyRecipe = id => {
+    fetch(`https://recipe-book-app-server-wheat.vercel.app/recipes/${id}`, {
+      method: "DELETE"
+    })
+    .then(res => res.json())
+    .then(data => {
+      if(data.deletedCount) {
+        const remainingRecipe = allRecipes.filter(recipe => recipe._id !== id)
+        setAllRecipes(remainingRecipe)
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Recipe has deleted successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+      }
+    })
+  }
 
   return (
     <div className="flex flex-col items-start gap-2 bg-gray-100 p-4 rounded-2xl">
@@ -114,7 +136,7 @@ const RecipeIndividual = ({ recipe }) => {
         >
           <MdModeEditOutline />
         </button>
-        <button className="btn bg-[#ff3539] text-base text-white">
+        <button onClick={() => handleDeleteMyRecipe(recipe._id)} className="btn bg-[#ff3539] text-base text-white">
           <MdDelete />
         </button>
       </div>
@@ -288,15 +310,3 @@ const RecipeIndividual = ({ recipe }) => {
 };
 
 export default RecipeIndividual;
-
-/* 
-I have this array "ingredients": [
-          "Mutton",
-          "Onions",
-          "Ginger-garlic paste",
-          "Tomato",
-          "Garam masala",
-          "Mustard oil"
-        ], then I have coverted to to string by this way defaultValue={recipe.allIngredients?.map(
-                      (ingredients) => ingredients
-                    )} and after */
