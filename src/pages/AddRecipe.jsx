@@ -1,23 +1,28 @@
 import React, { useContext } from "react";
 import Swal from "sweetalert2";
 import { ContextValues } from "../contexts/ContextProvider";
+import { useNavigate } from "react-router";
 
 const AddRecipe = () => {
-  
-  const {user} = useContext(ContextValues)
+  const { user, allRecipes, setAllRecipes } = useContext(ContextValues);
+  const navigate = useNavigate();
 
   const handleAddRecipeForm = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const {ingredients, ...othersData} = Object.fromEntries(formData.entries());
-    const allIngredients = ingredients.split(",").map(ingredient => ingredient.trim())
+    const { ingredients, ...othersData } = Object.fromEntries(
+      formData.entries()
+    );
+    const allIngredients = ingredients
+      .split(",")
+      .map((ingredient) => ingredient.trim());
     // console.log(allIngredients)
     othersData.likeCount = 0;
-    othersData.author = {name: user?.displayName, email: user?.email}
+    othersData.author = { name: user?.displayName, email: user?.email };
 
-    const recipeDetails = {...othersData, allIngredients}
+    const newRecipe = { ...othersData, allIngredients };
 
-    console.log(recipeDetails);
+    // console.log(recipeDetails);
 
     // add recipe to database
     fetch("https://recipe-book-app-server-wheat.vercel.app/recipes", {
@@ -25,11 +30,19 @@ const AddRecipe = () => {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(recipeDetails),
+      body: JSON.stringify(newRecipe),
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
+          navigate("/all-recipes");
+/*           setAllRecipes((prevRecipes) =>
+            prevRecipes.map((recipe) =>
+              recipe._id === recipeDetails._id ? recipeDetails : recipe
+            )
+          ); */
+          newRecipe._id = data.insertedId;
+          setAllRecipes([...allRecipes, newRecipe])
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -186,7 +199,6 @@ const AddRecipe = () => {
 };
 
 export default AddRecipe;
-
 
 /* 
 https://i.ibb.co/ynJbRnWc/backed-garlic-chilli.jpg

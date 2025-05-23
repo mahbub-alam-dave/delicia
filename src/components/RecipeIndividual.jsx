@@ -1,50 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import { AiOutlineLike } from "react-icons/ai";
 import { MdModeEditOutline, MdDelete } from "react-icons/md";
-import Swal from "sweetalert2";
-import { ContextValues } from "../contexts/ContextProvider";
 
-const RecipeIndividual = ({ recipe }) => {
-
-  const {allRecipes, setAllRecipes} = useContext(ContextValues)
-  const handleUpdateMyRecipe = (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(e.target);
-    const { ingredients, ...othersData } = Object.fromEntries(
-      formData.entries()
-    );
-    const allIngredients = ingredients
-      .split(",")
-      .map((ingredient) => ingredient.trim());
-    const updatedRecipeDetails = { ...othersData, allIngredients };
-    console.log(updatedRecipeDetails.allIngredients);
-
-    fetch(
-      `https://recipe-book-app-server-wheat.vercel.app/recipes/${recipe._id}`,
-      {
-        method: "PATCH",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(updatedRecipeDetails),
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("data after updated", data);
-        document.getElementById("my_modal_5").close();
-        if (data.modifiedCount) {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Recipe has updated successfully",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-      });
-  };
+const RecipeIndividual = ({ recipe, handleUpdateMyRecipe, handleDeleteMyRecipe }) => {
 
   const buttonColors = [
     "#FF6B6B",
@@ -61,25 +19,7 @@ const RecipeIndividual = ({ recipe }) => {
   };
 
 
-  const handleDeleteMyRecipe = id => {
-    fetch(`https://recipe-book-app-server-wheat.vercel.app/recipes/${id}`, {
-      method: "DELETE"
-    })
-    .then(res => res.json())
-    .then(data => {
-      if(data.deletedCount) {
-        const remainingRecipe = allRecipes.filter(recipe => recipe._id !== id)
-        setAllRecipes(remainingRecipe)
-        Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Recipe has deleted successfully",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-      }
-    })
-  }
+
 
   return (
     <div className="flex flex-col items-start gap-2 bg-gray-100 p-4 rounded-2xl">
@@ -131,7 +71,7 @@ const RecipeIndividual = ({ recipe }) => {
           <AiOutlineLike size={20} />
         </div>
         <button
-          onClick={() => document.getElementById("my_modal_5").showModal()}
+          onClick={() => document.getElementById(recipe._id).showModal()}
           className="btn bg-[#ff3539] text-base text-white"
         >
           <MdModeEditOutline />
@@ -142,7 +82,7 @@ const RecipeIndividual = ({ recipe }) => {
       </div>
       {/* Open the modal using document.getElementById('ID').showModal() method */}
       <dialog
-        id="my_modal_5"
+        id={recipe._id}
         className="modal modal-bottom sm:modal-middle p-4"
       >
         <div className="modal-box">
@@ -150,7 +90,7 @@ const RecipeIndividual = ({ recipe }) => {
             <h2 className="rancho text-3xl font-semibold md:text-4xl text-[#ff3539] text-center">
               Update Recipe
             </h2>
-            <form onSubmit={handleUpdateMyRecipe}>
+            <form onSubmit={(e) => handleUpdateMyRecipe(e, recipe._id)}>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 ">
                 <fieldset>
                   <label
