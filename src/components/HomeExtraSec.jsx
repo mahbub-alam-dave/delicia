@@ -25,7 +25,6 @@ const HomeExtraSec = () => {
     autoplay: true,
     speed: 4000,
     autoplaySpeed: 2000,
-    cssEase: "linear",
     responsive: [
       {
         breakpoint: 1024,
@@ -33,7 +32,6 @@ const HomeExtraSec = () => {
           slidesToShow: 2,
           slidesToScroll: 1,
           infinite: true,
-          dots: true
         }
       },
       {
@@ -149,7 +147,7 @@ const HomeExtraSec = () => {
             <Slider {...settings}>
           {blogs.map((blog) => {
             return (
-              <div key={blog.id} className="flex flex-col bg-gray-50 pr-4">
+              <div key={blog.id} className="flex flex-col bg-gray-50 pr-4 focus:outline-none">
                 <img
                   className="w-full h-[320px] object-cover"
                   src={blog.thumbnail}
