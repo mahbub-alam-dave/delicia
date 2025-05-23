@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { IoTimeOutline } from "react-icons/io5";
 import { RiMessage2Line } from "react-icons/ri";
+
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
 import { Typewriter } from 'react-simple-typewriter'
+import { Tooltip } from 'react-tooltip'
 
 const HomeExtraSec = () => {
   const [blogs, setBlogs] = useState([]);
@@ -153,7 +156,7 @@ const HomeExtraSec = () => {
                   alt=""
                 />
                 <div className="p-4">
-                  <h2 className="text-2xl font-semibold">{blog.title}</h2>
+                  <h2 className="text-2xl font-semibold">{blog.title.length < 25 ? blog.title : <a data-tooltip-id="my-tooltip" data-tooltip-content={blog.title}>{blog.title.slice(0, 25) + "..."}</a>}</h2>
                   <div className="flex justify-between mt-2">
                     <div>
                       <span className="font-medium text-[#858383]">by </span>
@@ -176,6 +179,7 @@ const HomeExtraSec = () => {
         </div>
         <button className=" bg-[#ff3539] text-white font-semibold text-lg md:text-xl px-4 py-2">See All Blogs</button>
       </div>
+      <Tooltip id="my-tooltip" />
     </div>
   );
 };
