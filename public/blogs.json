@@ -1,0 +1,64 @@
+[
+  {
+    "id": "1",
+    "thumbnail": "https://i.ibb.co/zVGy1zFX/10-Quick-Breakfast-Recipes-to-Kickstart-Your-Day.jpg",
+    "title": "10 Quick Breakfast Recipes to Kickstart Your Day",
+    "author": "Amira Dey",
+    "publishDate": "2025-05-20",
+    "commentCount": 8,
+    "description": "Easy and delicious breakfast ideas you can make in under 20 minutes."
+  },
+  {
+    "id": "2",
+    "thumbnail": "https://i.ibb.co/WNfGBndg/5-Pro-Tips-for-Perfect-Pasta-Every-Time.jpg",
+    "title": "5 Pro Tips for Perfect Pasta Every Time",
+    "author": "Liam Kapoor",
+    "publishDate": "2025-05-18",
+    "commentCount": 12,
+    "description": "Learn how to cook pasta like a pro with these foolproof techniques."
+  },
+  {
+    "id": "3",
+    "thumbnail": "https://i.ibb.co/zWyD886H/Top-7-Dessert-Recipes-for-Summer.jpg",
+    "title": "Sweet Treats: Top 7 Dessert Recipes for Summer",
+    "author": "Rhea Sen",
+    "publishDate": "2025-05-15",
+    "commentCount": 5,
+    "description": "Cool and refreshing dessert recipes perfect for hot summer days."
+  },
+  {
+    "id": "4",
+    "thumbnail": "https://i.ibb.co/hJF98WVs/Healthy-Salads-That-Actually-Taste-Amazing.jpg",
+    "title": "Healthy Salads That Actually Taste Amazing",
+    "author": "Nina Mukherjee",
+    "publishDate": "2025-05-10",
+    "commentCount": 15,
+    "description": "Forget boring salads — these fresh, vibrant recipes are packed with flavor."
+  },
+  {
+    "id": "5",
+    "thumbnail": "https://i.ibb.co/dJ0CcyZs/Vegan-Recipes-Even-Non-Vegans-Will-Love.jpg",
+    "title": "Vegan Recipes Even Non-Vegans Will Love",
+    "author": "Aryan Patel",
+    "publishDate": "2025-05-05",
+    "commentCount": 9,
+    "description": "Plant-based dishes so good you'll never miss the meat."
+  },
+  {
+    "id": "6",
+    "thumbnail": "https://i.ibb.co/gbDZFmcP/BBQ-Tips-for-Beginners.jpg",
+    "title": "Grill Like a Boss: BBQ Tips for Beginners",
+    "author": "Tanya Roy",
+    "publishDate": "2025-05-01",
+    "commentCount": 6,
+    "description": "Master the grill this summer with these easy BBQ tricks."
+  }
+]
+
+
+
+
+
+
+
+
