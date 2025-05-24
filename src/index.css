@@ -15,3 +15,17 @@ body {
 a.active {
     color: red;
 }
+
+.dark-mode {
+--bg-color: #121212;
+  --text-color: #f0f0f0;
+}
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: blue;
+  --color-secondary: teal;
+  --dark-bg-color: #121212;
+  --dark-text-color: #f0f0f0;
+}

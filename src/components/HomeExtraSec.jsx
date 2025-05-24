@@ -53,24 +53,24 @@ const HomeExtraSec = () => {
   };
   return (
     <div className="pb-12">
-      <div className="py-12 flex flex-col gap-12 items-center">
-        <h2 className="rancho text-3xl font-semibold md:text-4xl text-[#ff3539] text-center">
+      <div className="py-6 flex flex-col gap-12 items-center">
+        <h2 className="rancho text-3xl font-semibold md:text-4xl text-[#ff3539] text-center pt-6">
           Our Best Deals
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 ">
           <div
             style={{
-              backgroundImage: "url('https://i.ibb.co/4wZdyhSK/image-two.jpg')",
+              backgroundImage: "linear-gradient(to bottom left, rgba(184, 134, 11, 0.0), rgba(0, 0, 0, 100)), url('https://i.ibb.co/4wZdyhSK/image-two.jpg')",
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
             className="w-full h-[800px] rounded-2xl p-4 flex flex-col gap-16  justify-center items-start"
           >
             <div className=" flex flex-col gap-6">
-              <span className="text-2xl md:text-3xl font-light shadow text-[rgb(255,236,66)]">
+              <span className="text-2xl md:text-3xl font-light text-[rgb(255,236,66)]">
                 Join our upcoming
               </span>
-              <h2 className="text-3xl sm:text-5xl md:text-[40px] lg:text-5xl font-black text-white shadow-lg ">
+              <h2 className="text-3xl sm:text-5xl md:text-[40px] lg:text-5xl font-black text-white  ">
                 Masterclass: <Typewriter
             words={["Secrets of Italian Cuisine", "Secrets of Italian Cuisine", "Secrets of Italian Cuisine"]}
             loop={5}
@@ -96,7 +96,7 @@ const HomeExtraSec = () => {
               className="w-full h-[388px] rounded-2xl p-4 flex flex-col gap-6 items-start justify-center"
               style={{
                 backgroundImage:
-                  "url('https://i.ibb.co/mVKrcngv/image-three.jpg')",
+                  "linear-gradient(to bottom left, rgba(184, 134, 11, 0.0), rgba(0, 0, 0, 100)), url('https://i.ibb.co/mVKrcngv/image-three.jpg')",
                 backgroundSize: "cover",
               }}
             >
@@ -115,7 +115,7 @@ const HomeExtraSec = () => {
               className="w-full h-[388px] rounded-2xl p-4 flex flex-col gap-6 items-start justify-center"
               style={{
                 backgroundImage:
-                  "url('https://i.ibb.co/S4Y3df2G/image-four.jpg')",
+                  "linear-gradient(to bottom left, rgba(184, 134, 11, 0.0), rgba(0, 0, 0, 100)), url('https://i.ibb.co/S4Y3df2G/image-four.jpg')",
                 backgroundSize: "cover",
               }}
             >

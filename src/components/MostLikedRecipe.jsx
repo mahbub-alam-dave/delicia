@@ -61,7 +61,9 @@ const getRandomButtonColors = () => {
         );
       })}
     </div>
-    <Link to={'/all-recipes'}><button className=" text-lg md:text-xl font-semibold bg-gray-200 text-black hover:bg-[#ff3539] px-4 py-2 rounded-lg sm:px-6 lg:px-8 sm:py-4 hover:text-white">Visit All Recipes</button></Link>
+    <div className="pt-6">
+      <Link to={'/all-recipes'}><button className=" text-lg md:text-xl font-semibold bg-gray-200 text-black hover:bg-[#ff3539] px-4 py-2 rounded-lg sm:px-6 lg:px-8 sm:py-4 hover:text-white">Visit All Recipes</button></Link>
+    </div>
     </div>
 
   );

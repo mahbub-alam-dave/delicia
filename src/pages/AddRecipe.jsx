@@ -85,6 +85,7 @@ const AddRecipe = () => {
                 type="radio"
                 name="category"
                 value="Lunch"
+                defaultChecked="Lunch"
                 className="mr-1"
               />
               <label htmlFor="Lunch" className="mr-3 text-[rgba(0,0,0,0.6)]">
@@ -147,6 +148,7 @@ const AddRecipe = () => {
                 name="recipeName"
                 placeholder="Enter recipe name"
                 className="input w-full"
+                required
               />
             </fieldset>
             <fieldset>
@@ -156,6 +158,7 @@ const AddRecipe = () => {
                 name="url"
                 placeholder="Enter photo Url"
                 className="input w-full"
+                required
               />
             </fieldset>
             <fieldset>
@@ -165,6 +168,7 @@ const AddRecipe = () => {
                 name="ingredients"
                 placeholder="Enter recipe ingredients with a comma"
                 className="input w-full"
+                required
               />
             </fieldset>
             <fieldset>
@@ -174,6 +178,7 @@ const AddRecipe = () => {
                 name="cookingTime"
                 placeholder="Estimated cooking time"
                 className="input w-full"
+                required
               />
             </fieldset>
           </div>
@@ -184,6 +189,7 @@ const AddRecipe = () => {
               rows="7"
               placeholder="Enter cooking instructions"
               className="textarea w-full"
+              required
             ></textarea>
           </fieldset>
           <button

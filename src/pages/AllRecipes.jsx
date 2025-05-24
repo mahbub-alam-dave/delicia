@@ -28,7 +28,6 @@ useEffect(()=> {
 // console.log(cuisineType)
 
 const handleCuisineTypeChange = e => {
-    console.log(e.target.value)
     if(e.target.value === "All") {
         setCuisineType(allRecipes)
     }
