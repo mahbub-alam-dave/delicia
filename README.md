@@ -24,6 +24,6 @@
 - etc.
 
 ## live link
-- rainbow-sundae-9956fb.netlify.app
+- https://endearing-beijinho-046288.netlify.app/
 
 
