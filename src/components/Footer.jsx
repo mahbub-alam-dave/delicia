@@ -5,21 +5,22 @@ const Footer = () => {
   const {lightMode} = useContext(ContextValues)
     return (
 <footer className={`footer footer-horizontal footer-center text-primary-content p-10 ${lightMode ? "bg-gray-900" : "bg-gray-50"}`}>
-  <div className='flex gap-2 items-center'>
+  <div className='flex flex-col gap-4'>
+      <div className='flex gap-2 items-center'>
     <img src="https://i.ibb.co/xtwSqrXY/delicia-logo.png" alt="" />
     <h2 className={`rancho text-3xl  font-bold ${lightMode ? "text-white" : "text-black"}`}>delicia</h2>
   </div>
-  <div className='flex flex-col gap-5'>
-  <div className="join">
-  <input className="input join-item focus:outline-none border-none text-gray-900" placeholder="Email" />
-  <button className="btn join-item rounded-r-full bg-[#ff3539] text-white">Subscribe</button>
+    <p className={`font-bold ${lightMode ? "text-white" : "text-black"}`}>
+      Get recipes all around the world at delicia
+    </p>
   </div>
-  <p className={`font-bold ${lightMode ? "text-white" : "text-black"}`}>
-    Enjoy delicious recipes with delicia
-  </p>
-    <p className={`${lightMode ? "text-white" : "text-black"}`}>Copyright © {new Date().getFullYear()} - All right reserved</p>
+  <div className={`flex flex-col ${lightMode ? "text-white" : "text-black"}`}>
+    <span className='font-bold'>Contact Us</span>
+    <span>Email: delicia@gmail.com</span>
+    <span>Phone: +000 999 999</span>
   </div>
-  <nav>
+
+  <nav className='flex flex-col gap-4'>
     <div className="grid grid-flow-col gap-4">
       <a>
         <svg
@@ -55,6 +56,7 @@ const Footer = () => {
         </svg>
       </a>
     </div>
+        <p className={`${lightMode ? "text-white" : "text-black"}`}>Copyright © {new Date().getFullYear()} - All right reserved</p>
   </nav>
 </footer>
     );

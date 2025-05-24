@@ -159,7 +159,7 @@ const handleToggleLightMode = () => {
             <span>Home</span>
           </NavLink>
           <NavLink to={"/all-recipes"} className="font-semibold text-base">
-            <span>All recipe</span>
+            <span>All recipes</span>
           </NavLink>
           <NavLink to={"/add-recipe"} className="font-semibold text-base">
             <span>Add recipe</span>
@@ -200,7 +200,7 @@ const handleToggleLightMode = () => {
               to={"/all-recipes"}
               className="font-semibold text-base"
             >
-              <span>All recipe</span>
+              <span>All recipes</span>
             </NavLink>
             <NavLink
               onClick={() => setDisplayMenu((display) => !display)}
@@ -222,7 +222,7 @@ const handleToggleLightMode = () => {
               type="checkbox"
               defaultChecked="checked"
               onChange={handleToggleLightMode}
-              className="toggle border-indigo-600 bg-indigo-500 checked:border-orange-500 checked:bg-orange-400 checked:text-orange-800"
+              className="toggle border-indigo-600 bg-[#ff3539] checked:border-orange-500 checked:bg-orange-400 checked:text-orange-600"
             />
             <div className="md:hidden">{getNavItems()}</div>
           </div>
