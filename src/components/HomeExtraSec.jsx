@@ -61,7 +61,7 @@ const HomeExtraSec = () => {
       <div className="py-6 flex flex-col gap-12 items-center">
         <div className="flex flex-col gap-5">
           <h2 className="rancho text-3xl font-semibold md:text-4xl text-[#ff3539] text-center pt-6">
-          Hot Deals
+          Our Hot Deals
         </h2>
         <p className={`text-base md:text-lg text-center ${lightMode ? "text-white" : "text-black"}`}>Savor exclusive recipe deals! Book your favorite dishes, secret menus, and chef specials at mouth-watering discounts.</p>
         </div>
@@ -72,9 +72,9 @@ const HomeExtraSec = () => {
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
-            className="w-full h-[800px] rounded-2xl p-4 flex flex-col gap-16  justify-center items-start"
+            className="w-full h-[800px] rounded-2xl px-4 sm:px-6 lg:px-12 flex flex-col gap-32  justify-center items-start"
           >
-            <div className=" flex flex-col gap-6">
+            <div className=" flex flex-col gap-4 mt-12">
               <span className="text-2xl md:text-3xl font-light text-[rgb(255,236,66)]">
                 Join our upcoming
               </span>
@@ -101,7 +101,7 @@ const HomeExtraSec = () => {
           </div>
           <div className="flex flex-col gap-6">
             <div
-              className="w-full h-[388px] rounded-2xl p-4 flex flex-col gap-6 items-start justify-center"
+              className="w-full h-[388px] rounded-2xl px-4 sm:px-6 lg:px-12 flex flex-col gap-6 items-start justify-center"
               style={{
                 backgroundImage:
                   "linear-gradient(to bottom left, rgba(184, 134, 11, 0.0), rgba(0, 0, 0, 100)), url('https://i.ibb.co/mVKrcngv/image-three.jpg')",
@@ -120,7 +120,7 @@ const HomeExtraSec = () => {
               </button>
             </div>
             <div
-              className="w-full h-[388px] rounded-2xl p-4 flex flex-col gap-6 items-start justify-center"
+              className="w-full h-[388px] rounded-2xl px-4 sm:px-6 lg:px-12 flex flex-col gap-6 items-start justify-center"
               style={{
                 backgroundImage:
                   "linear-gradient(to bottom left, rgba(184, 134, 11, 0.0), rgba(0, 0, 0, 100)), url('https://i.ibb.co/S4Y3df2G/image-four.jpg')",
@@ -128,14 +128,14 @@ const HomeExtraSec = () => {
               }}
             >
               <h2 className="text-3xl font-bold text-white">
-                Battle of the Plates
+                2025 Food Contest
               </h2>
               <p className="text-lg md:text-xl font-medium text-[#c9c9c9]">
                 Register now and show off your signature dish. Winner gets a
                 feature spot and surprise culinary gifts!
               </p>
               <button className="btn text-white bg-[#ff3539]">
-                Register Now
+                Apply Now
               </button>
             </div>
           </div>

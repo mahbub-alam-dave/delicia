@@ -60,7 +60,9 @@ const handleToggleLightMode = () => {
       .then(() => {
         // user logged out successfully
         setUser(null);
-        setDisplayMenu((display) => !display)
+        if(displayMenu) {
+          setDisplayMenu(false)
+        }
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -79,6 +81,12 @@ const handleToggleLightMode = () => {
         });
       });
   };
+
+  const handleLoginAndRegisterForMenu = () => {
+    if(displayMenu) {
+      setDisplayMenu(false)
+    }
+  }
 
   const getNavItems = () => {
     return user ? (
@@ -125,12 +133,12 @@ const handleToggleLightMode = () => {
     ) : (
       <div className="flex items-center gap-2">
         <Link to={"/login"}>
-          <button onClick={() =>setDisplayMenu((display) => !display)} className="btn bg-[#ff3539] text-lg font-semibold text-white">
+          <button onClick={handleLoginAndRegisterForMenu} className="btn bg-[#ff3539] text-lg font-semibold text-white">
             Login
           </button>
         </Link>
         <Link to={"/register"}>
-          <button onClick={() =>setDisplayMenu((display) => !display)} className="btn text-lg font-semibold">Register</button>
+          <button onClick={handleLoginAndRegisterForMenu} className="btn text-lg font-semibold">Register</button>
         </Link>
         <input
           type="checkbox"
