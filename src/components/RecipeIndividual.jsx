@@ -1,25 +1,9 @@
 import React from "react";
 import { AiOutlineLike } from "react-icons/ai";
 import { MdModeEditOutline, MdDelete } from "react-icons/md";
+import getRandomButtonColors from "./colorfulButton";
 
 const RecipeIndividual = ({ recipe, handleUpdateMyRecipe, handleDeleteMyRecipe }) => {
-
-  const buttonColors = [
-    "#FF6B6B",
-    "#4ECDC4",
-    "#80bd30",
-    "#257885",
-    "#FF9F1C",
-    "#8761bb",
-  ];
-
-  const getRandomButtonColors = () => {
-    const randomIndex = Math.floor(Math.random() * buttonColors.length);
-    return buttonColors[randomIndex];
-  };
-
-
-
 
   return (
     <div className="flex flex-col items-start gap-2 bg-gray-100 p-4 rounded-2xl">

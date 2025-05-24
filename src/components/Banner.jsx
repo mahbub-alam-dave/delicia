@@ -13,23 +13,6 @@ import 'swiper/css/scrollbar'; */
 const Banner = () => {
   return (
     <div className="mt-8">
-      {/*       <Swiper
-      modules={[Navigation, Pagination, Scrollbar, A11y]}
-      navigation
-      pagination={{ clickable: true }}
-      spaceBetween={50}
-      slidesPerView={1}
-      onSlideChange={() => 
-        console.log('slide change')}
- 
-    >
-      <SwiperSlide>
-        <img src="public/desert-fruit.jpg" alt="" className='w-full max-h-[550px] object-cover' />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src="public/desert-fruit.jpg"  alt="" className='w-full max-h-[550px] object-cover' />
-      </SwiperSlide>
-        </Swiper> */}
       <div
         className="w-full h-[650px] flex justify-center flex-col gap-5 rounded-2xl"
         style={{
@@ -53,9 +36,9 @@ const Banner = () => {
           </div>
           <Fade direction="up">
         <div className="flex flex-col gap-4 w-full xl:w-[50%]">
-          <label className="input w-full focus:outline-none focus:border-none h-14 bg-white">
+          <label className="input w-full focus:outline-none border-none h-14 bg-white">
           <ImSpoonKnife className="text-2xl lg:text-3xl text-[#ff3539]"/>
-          <input type="text" className="input text-base lg:text-lg w-full focus:outline-none focus:border-none" placeholder="Find what you want to cook today" />
+          <input type="text" className="input text-base lg:text-lg w-full focus:outline-none border-none" placeholder="Find what you want to cook today" />
           <button className="btn bg-[#ff3539] text-white"><IoIosSearch className="text-2xl lg:text-3xl"/></button>
         </label>
         <span className="text-sm text-[rgba(255,255,255,0.47)]">Type a keyword and discover recipes that turn your cravings into delicious reality!</span>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { IoTimeOutline } from "react-icons/io5";
 import { RiMessage2Line } from "react-icons/ri";
 
@@ -8,16 +8,21 @@ import "slick-carousel/slick/slick-theme.css";
 
 import { Typewriter } from 'react-simple-typewriter'
 import { Tooltip } from 'react-tooltip'
+import { ContextValues } from "../contexts/ContextProvider";
+
 
 const HomeExtraSec = () => {
+
+
   const [blogs, setBlogs] = useState([]);
+  const {lightMode} = useContext(ContextValues)
   useEffect(() => {
     fetch("blogs.json")
       .then((res) => res.json())
       .then((data) => setBlogs(data));
   }, []);
 
-      const settings = {
+    const settings = {
     dots: false,
     infinite: true,
     slidesToShow: 3,
@@ -58,7 +63,7 @@ const HomeExtraSec = () => {
           <h2 className="rancho text-3xl font-semibold md:text-4xl text-[#ff3539] text-center pt-6">
           Hot Deals
         </h2>
-        <p className="text-base md:text-lg text-center">Savor exclusive recipe deals! Book your favorite dishes, secret menus, and chef specials at mouth-watering discounts.</p>
+        <p className={`text-base md:text-lg text-center ${lightMode ? "text-white" : "text-black"}`}>Savor exclusive recipe deals! Book your favorite dishes, secret menus, and chef specials at mouth-watering discounts.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 ">
           <div
@@ -141,33 +146,33 @@ const HomeExtraSec = () => {
           <h2 className="rancho text-3xl font-semibold md:text-4xl text-[#ff3539] text-center">
             Our Latest Blogs
           </h2>
-          <p className="text-base sm:text-lg leading-[30px]">
+          <p className={`text-base sm:text-lg leading-[30px] ${lightMode ? "text-white" : "text-black"}`}>
             Discover stories, tips, and trends to inspire your culinary journey
             and creativity!
           </p>
         </div>
         <div className="w-full ">
-            <Slider {...settings}>
+            <Slider {...settings} className="flex gap-4">
           {blogs.map((blog) => {
             return (
-              <div key={blog.id} className="flex flex-col bg-gray-50 pr-4 focus:outline-none">
+              <div key={blog.id} className={`flex flex-col ml-4 focus:outline-none ${lightMode ? "bg-gray-900" : "bg-gray-50"}`}>
                 <img
                   className="w-full h-[320px] object-cover"
                   src={blog.thumbnail}
                   alt=""
                 />
                 <div className="p-4">
-                  <h2 className="text-2xl font-semibold">{blog.title.length < 25 ? blog.title : <a data-tooltip-id="my-tooltip" data-tooltip-content={blog.title}>{blog.title.slice(0, 25) + "..."}</a>}</h2>
+                  <h2 className={`text-2xl font-semibold ${lightMode ? "text-white" : "text-black"}`}>{blog.title.length < 25 ? blog.title : <a data-tooltip-id="my-tooltip" data-tooltip-content={blog.title}>{blog.title.slice(0, 25) + "..."}</a>}</h2>
                   <div className="flex justify-between mt-2">
                     <div>
                       <span className="font-medium text-[#858383]">by </span>
-                      <span className="font-bold">{blog.author}</span>
+                      <span className={`font-bold ${lightMode ? "text-white" : "text-black"}`}>{blog.author}</span>
                     </div>
-                    <div className="flex gap-2 items-center">
+                    <div className={`flex gap-2 items-center ${lightMode ? "text-white" : "text-black"}`}>
                       <IoTimeOutline size={20} />
                       <span>{blog.publishDate}</span>
                     </div>
-                    <div className="flex gap-1 items-center">
+                    <div className={`flex gap-1 items-center ${lightMode ? "text-white" : "text-black"}`}>
                       <RiMessage2Line size={20} />
                       <span>{blog.commentCount}</span>
                     </div>

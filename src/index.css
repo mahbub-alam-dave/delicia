@@ -1,23 +1,33 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Rancho&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Rancho&display=swap");
 
 body {
-     font-family: "Raleway", sans-serif;
-       overflow-x: hidden;
+  font-family: "Raleway", sans-serif;
+  overflow-x: hidden;
 }
 
 .rancho {
-    font-family: "Rancho", cursive;
+  font-family: "Rancho", cursive;
 }
 
 a.active {
-    color: red;
+  color: red;
+}
+
+.slick-slide > div {
+  margin: 0 10px;
+}
+
+.slick-prev,
+.slick-next {
+  display: none !important;
+  /* z-index: 10; */
 }
 
 .dark-mode {
---bg-color: #121212;
+  --bg-color: #121212;
   --text-color: #f0f0f0;
 }
 

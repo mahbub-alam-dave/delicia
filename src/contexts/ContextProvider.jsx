@@ -10,6 +10,7 @@ const ContextProvider = ({children}) => {
     const [allRecipes, setAllRecipes] = useState([])
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [lightMode, setLightMode] = useState(false)
 
     useEffect(()=>{
         fetch("https://recipe-book-app-server-wheat.vercel.app/recipes")
@@ -60,7 +61,9 @@ const ContextProvider = ({children}) => {
         user,
         setUser,
         logOutUser,
-        loading
+        loading,
+        lightMode,
+        setLightMode
     }
 
     // console.log(user)
