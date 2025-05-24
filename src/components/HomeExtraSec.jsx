@@ -54,9 +54,12 @@ const HomeExtraSec = () => {
   return (
     <div className="pb-12">
       <div className="py-6 flex flex-col gap-12 items-center">
-        <h2 className="rancho text-3xl font-semibold md:text-4xl text-[#ff3539] text-center pt-6">
-          Our Best Deals
+        <div className="flex flex-col gap-5">
+          <h2 className="rancho text-3xl font-semibold md:text-4xl text-[#ff3539] text-center pt-6">
+          Hot Deals
         </h2>
+        <p className="text-base md:text-lg text-center">Savor exclusive recipe deals! Book your favorite dishes, secret menus, and chef specials at mouth-watering discounts.</p>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 ">
           <div
             style={{
