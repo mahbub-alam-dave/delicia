@@ -185,7 +185,7 @@ const Header = () => {
           }`}
         >
           <img src="https://i.ibb.co/xtwSqrXY/delicia-logo.png" alt="" />
-          <h2 className="rancho text-3xl font-bold">delicia</h2>
+          <h2 className="rancho text-3xl text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] font-bold">delicia</h2>
         </div>
 
         <nav
