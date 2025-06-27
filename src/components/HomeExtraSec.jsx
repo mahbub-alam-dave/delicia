@@ -63,7 +63,7 @@ const HomeExtraSec = () => {
           <h2 className="rancho text-3xl font-semibold md:text-4xl text-[#ff3539] text-center">
           Our Hot Deals
         </h2>
-        <p className={`text-base md:text-lg text-center ${lightMode ? "text-white" : "text-black"}`}>Savor exclusive recipe deals! Book your favorite dishes, secret menus, and chef specials at mouth-watering discounts.</p>
+        <p className={`text-base md:text-lg text-center text-gray-800 dark:text-gray-200`}>Savor exclusive recipe deals! Book your favorite dishes, secret menus, and chef specials at mouth-watering discounts.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 ">
           <div
@@ -146,7 +146,7 @@ const HomeExtraSec = () => {
           <h2 className="rancho text-3xl font-semibold md:text-4xl text-[#ff3539] text-center">
             Our Latest Blogs
           </h2>
-          <p className={`text-base sm:text-lg leading-[30px] ${lightMode ? "text-white" : "text-black"}`}>
+          <p className={`text-base sm:text-lg leading-[30px] text-gray-800 dark:text-gray-200`}>
             Discover stories, tips, and trends to inspire your culinary journey
             and creativity!
           </p>
@@ -155,24 +155,24 @@ const HomeExtraSec = () => {
             <Slider {...settings} className="flex gap-4">
           {blogs.map((blog) => {
             return (
-              <div key={blog.id} className={`flex flex-col ml-4 focus:outline-none ${lightMode ? "bg-gray-900" : "bg-gray-50"}`}>
+              <div key={blog.id} className={`flex flex-col ml-4 focus:outline-none bg-[var(--color-primary)] dark:bg-[var(--color-primary-dark)]`}>
                 <img
                   className="w-full h-[320px] object-cover"
                   src={blog.thumbnail}
                   alt=""
                 />
                 <div className="p-4">
-                  <h2 className={`text-2xl font-semibold ${lightMode ? "text-white" : "text-black"}`}>{blog.title.length < 25 ? blog.title : <a data-tooltip-id="my-tooltip" data-tooltip-content={blog.title}>{blog.title.slice(0, 25) + "..."}</a>}</h2>
+                  <h2 className={`text-2xl font-semibold text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]`}>{blog.title.length < 25 ? blog.title : <a data-tooltip-id="my-tooltip" data-tooltip-content={blog.title}>{blog.title.slice(0, 25) + "..."}</a>}</h2>
                   <div className="flex justify-between mt-2">
                     <div>
                       <span className="font-medium text-[#858383]">by </span>
-                      <span className={`font-bold ${lightMode ? "text-white" : "text-black"}`}>{blog.author}</span>
+                      <span className={`font-bold text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]`}>{blog.author}</span>
                     </div>
-                    <div className={`flex gap-2 items-center ${lightMode ? "text-white" : "text-black"}`}>
+                    <div className={`flex gap-2 items-center text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]`}>
                       <IoTimeOutline size={20} />
                       <span>{blog.publishDate}</span>
                     </div>
-                    <div className={`flex gap-1 items-center ${lightMode ? "text-white" : "text-black"}`}>
+                    <div className={`flex gap-1 items-center text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]`}>
                       <RiMessage2Line size={20} />
                       <span>{blog.commentCount}</span>
                     </div>

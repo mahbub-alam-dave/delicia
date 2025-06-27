@@ -24,14 +24,6 @@ const Register = () => {
         setValidationError("Password must be in 6 characters, with at least one uppercase and lowercase")
         return
         }
-        /* else if(!/(?=.*[A-Z])/.test(password)) {
-          setValidationError("Password must contain one uppercase character");
-          return
-        }
-        else if(!/(.{6,}$)/.test(password)) {
-          setValidationError("Password must be at least 6 characters long");
-          return
-        } */
     registerUser(email, password).then(() => {
       // user registered successfully
       updateUserProfile({displayName: profileData.name, photoURL: profileData.photo})

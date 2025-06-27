@@ -4,10 +4,11 @@ import { CiMenuFries } from "react-icons/ci";
 import { IoMdClose } from "react-icons/io";
 import { ContextValues } from "../contexts/ContextProvider";
 import Swal from "sweetalert2";
-import { Tooltip } from "react-tooltip";
+import ToggleIcon from "./ToggleIcon";
 
 const Header = () => {
-  const { logOutUser, user, setUser, lightMode, setLightMode } = useContext(ContextValues);
+  const { logOutUser, user, setUser, lightMode } =
+    useContext(ContextValues);
 
   const [displayMenu, setDisplayMenu] = useState(false);
   const [showUserInfo, setShowUserInfo] = useState(false);
@@ -17,7 +18,6 @@ const Header = () => {
   const handleMenuBtn = () => {
     setDisplayMenu((display) => !display);
   };
-
 
   useEffect(() => {
     let stopTimeout;
@@ -47,21 +47,20 @@ const Header = () => {
     };
   }, [triggeredAction]);
 
-
-const handleToggleLightMode = () => {
-  setLightMode(mode => !mode)
-  if(displayMenu) {
-    setDisplayMenu(false)
-  }
-}
+  // const handleToggleLightMode = () => {
+  //   setLightMode((mode) => !mode);
+  //   if (displayMenu) {
+  //     setDisplayMenu(false);
+  //   }
+  // };
 
   const handleLogOutUser = () => {
     logOutUser()
       .then(() => {
         // user logged out successfully
         setUser(null);
-        if(displayMenu) {
-          setDisplayMenu(false)
+        if (displayMenu) {
+          setDisplayMenu(false);
         }
         Swal.fire({
           position: "top-end",
@@ -83,69 +82,90 @@ const handleToggleLightMode = () => {
   };
 
   const handleLoginAndRegisterForMenu = () => {
-    if(displayMenu) {
-      setDisplayMenu(false)
+    if (displayMenu) {
+      setDisplayMenu(false);
     }
-  }
+  };
 
   const getNavItems = () => {
     return user ? (
       <div className="flex gap-2 items-center">
-        <a data-tooltip-id="toggle" data-tooltip-content={"Toggle to change color mode"} data-tooltip-place="top">
-        <input
-          type="checkbox"
-          onChange={handleToggleLightMode}
-          defaultChecked="checked"
-          className="hidden lg:toggle border-indigo-600 bg-[#ff3539] checked:border-orange-500 checked:bg-orange-400 checked:text-orange-600"
-        />
-        </a>
-        <Tooltip id="toggle"  place="top"/>
-      <div
-        onClick={() => setShowUserInfo((userInfo) => !userInfo)}
-        className="relative cursor-pointer"
-      >
+          {/* <input
+            type="checkbox"
+            onChange={handleToggleLightMode}
+            defaultChecked="checked"
+            className="hidden lg:toggle border-indigo-600 bg-[#ff3539] checked:border-orange-500 checked:bg-orange-400 checked:text-orange-600"
+          /> */}
+          <div className="hidden lg:flex items-center">
+            <ToggleIcon
+              setDisplayMenu={setDisplayMenu}
+              displayMenu={displayMenu}
+            />
+          </div>
+
         <div
-          className={`bg-white shadow p-2 ${
-            showUserInfo ? "flex items-start flex-col gap-2" : "hidden"
-          } absolute top-12 `}
+          onClick={() => setShowUserInfo((userInfo) => !userInfo)}
+          className="relative cursor-pointer"
         >
-          <h2 className="text-sm">
-            <span className="font-semibold">User: </span>
-            {user.displayName}
-          </h2>
-          <button
-            onClick={handleLogOutUser}
-            className="btn btn-sm bg-[#ff3539] text-white text-sm"
+          <div
+            className={`bg-gray-200 shadow p-2 ${
+              showUserInfo ? "flex items-start flex-col gap-2" : "hidden"
+            } absolute top-12 `}
           >
-            Logout
-          </button>
+            <h2 className="text-sm">
+              <span className="font-semibold">User: </span>
+              {user.displayName}
+            </h2>
+            <button
+              onClick={handleLogOutUser}
+              className="btn btn-sm bg-[#ff3539] text-white text-sm"
+            >
+              Logout
+            </button>
+          </div>
+          <div className="border border-gray-300 dark:border-white rounded-[50%]">
+          <img
+            src={
+              user?.photoURL
+                ? user.photoURL
+                : "https://i.ibb.co/FLrrTVtL/man.png"
+            }
+            alt={user?.displayName}
+            className="w-12 h-12 object-cover rounded-[50%]"
+          />
+          </div>
         </div>
-        <img
-          src={
-            user?.photoURL ? user.photoURL : "https://i.ibb.co/FLrrTVtL/man.png"
-          }
-          alt={user?.displayName}
-          className="w-12 h-12 object-cover rounded-[50%]"
-        />
-      </div>
-        
       </div>
     ) : (
       <div className="flex items-center gap-2">
         <Link to={"/login"}>
-          <button onClick={handleLoginAndRegisterForMenu} className="btn bg-[#ff3539] text-lg font-semibold text-white">
+          <button
+            onClick={handleLoginAndRegisterForMenu}
+            className="btn bg-[#ff3539] text-lg font-semibold text-white"
+          >
             Login
           </button>
         </Link>
         <Link to={"/register"}>
-          <button onClick={handleLoginAndRegisterForMenu} className="btn text-lg font-semibold">Register</button>
+          <button
+            onClick={handleLoginAndRegisterForMenu}
+            className="btn text-lg font-semibold"
+          >
+            Register
+          </button>
         </Link>
-        <input
+        {/* <input
           type="checkbox"
           defaultChecked="checked"
           onChange={handleToggleLightMode}
           className="hidden lg:toggle border-indigo-600 bg-[#ff3539] checked:border-orange-500 checked:bg-orange-400 checked:text-orange-600"
-        />
+        /> */}
+        <div className="hidden lg:block">
+          <ToggleIcon
+            setDisplayMenu={setDisplayMenu}
+            displayMenu={displayMenu}
+          />
+        </div>
       </div>
     );
   };
@@ -154,28 +174,41 @@ const handleToggleLightMode = () => {
     <div
       className={`${
         displayHeader ? "top-[-100px]" : "top-0"
-      } border-b border-[rgba(163,163,163,0.44)] sticky z-1000 header transition-all duration-400 ease-in-out ${lightMode ? "bg-gray-900" : "bg-[#fff]"}`}
+      } border-b border-[rgba(163,163,163,0.44)] sticky z-1000 header transition-all duration-400 ease-in-out bg-gray-50 dark:bg-[#070F2B]`}
     >
-      <div className={`p-4 max-w-11/12 mx-auto flex justify-between items-center`}>
-        <div className={`flex gap-2 items-center ${lightMode ? "text-[#fff]" : "text-[#121212]"}`}>
+      <div
+        className={`p-4 max-w-11/12 mx-auto flex justify-between items-center`}
+      >
+        <div
+          className={`flex gap-2 items-center ${
+            lightMode ? "text-[#fff]" : "text-[#121212]"
+          }`}
+        >
           <img src="https://i.ibb.co/xtwSqrXY/delicia-logo.png" alt="" />
           <h2 className="rancho text-3xl font-bold">delicia</h2>
         </div>
 
-        <nav className={`hidden lg:flex gap-4 lg:gap-6 ${lightMode ? "text-[#fff]" : "text-[#121212]"}`}>
+        <nav
+          className={`hidden lg:flex gap-4 lg:gap-6 dark:text-gray-200`}
+        >
           <NavLink to={"/"} className="font-semibold text-base">
             <span>Home</span>
           </NavLink>
           <NavLink to={"/all-recipes"} className="font-semibold text-base">
             <span>All recipes</span>
           </NavLink>
-          <NavLink to={"/add-recipe"} className="font-semibold text-base">
+          {/* <NavLink to={"/add-recipe"} className="font-semibold text-base">
             <span>Add recipe</span>
-          </NavLink>
+          </NavLink> */}
           {user && (
-            <NavLink to={"/my-recipes"} className="font-semibold text-base">
-              <span>My Recipes</span>
-            </NavLink>
+            <>
+              {/* <NavLink to={"/my-recipes"} className="font-semibold text-base">
+                <span>My Recipes</span>
+              </NavLink> */}
+              <NavLink to={"/dashboard"} className="font-semibold text-base">
+                <span>Dashboard</span>
+              </NavLink>
+            </>
           )}
         </nav>
 
@@ -183,7 +216,9 @@ const handleToggleLightMode = () => {
           <div className="hidden md:block">{getNavItems()}</div>
           <CiMenuFries
             onClick={handleMenuBtn}
-            className={`text-3xl font-bold block lg:hidden ${lightMode ? "text-white" : "text-black"}`}
+            className={`text-3xl font-bold block lg:hidden ${
+              lightMode ? "text-white" : "text-black"
+            }`}
           />
         </div>
         <div
@@ -226,12 +261,18 @@ const handleToggleLightMode = () => {
                 <span>My Recipes</span>
               </NavLink>
             )}
-            <input
+            {/*             <input
               type="checkbox"
               defaultChecked="checked"
               onChange={handleToggleLightMode}
               className="toggle border-indigo-600 bg-[#ff3539] checked:border-orange-500 checked:bg-orange-400 checked:text-orange-600"
-            />
+            /> */}
+            <div className="">
+              <ToggleIcon
+                setDisplayMenu={setDisplayMenu}
+                displayMenu={displayMenu}
+              />
+            </div>
             <div className="md:hidden">{getNavItems()}</div>
           </div>
         </div>

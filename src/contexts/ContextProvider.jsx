@@ -12,8 +12,22 @@ const ContextProvider = ({children}) => {
     const [loading, setLoading] = useState(true)
     const [lightMode, setLightMode] = useState(false)
 
+        const [mode, setMode] = useState(localStorage.getItem("theme") === "dark")
+
+
+    useEffect(() => {
+        if(mode) {
+            document.documentElement.classList.add("dark")
+            localStorage.setItem("theme", "dark")
+        }
+        else {
+            document.documentElement.classList.remove("dark")
+            localStorage.setItem("theme", "light")
+        }
+    }, [mode])
+
     useEffect(()=>{
-        fetch("https://recipe-book-app-server-wheat.vercel.app/recipes")
+        fetch(`${import.meta.env.VITE_api_url}/recipes`)
         .then(res => res.json())
         .then(data => setAllRecipes(data))
     },[])
@@ -31,6 +45,7 @@ const ContextProvider = ({children}) => {
     }
 
     const updateUserProfile = (userProfileData) => {
+        setLoading(true)
         return updateProfile(auth.currentUser, userProfileData)
     }
 
@@ -62,6 +77,9 @@ const ContextProvider = ({children}) => {
         setUser,
         logOutUser,
         loading,
+        setLoading,
+        mode,
+        setMode,
         lightMode,
         setLightMode
     }

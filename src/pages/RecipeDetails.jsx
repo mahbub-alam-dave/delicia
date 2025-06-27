@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ContextValues } from "../contexts/ContextProvider";
-import { useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import { AiOutlineLike } from "react-icons/ai";
+import { FaChevronLeft } from "react-icons/fa6";
 
 import { Fade } from "react-awesome-reveal";
 import Swal from "sweetalert2";
@@ -9,6 +10,7 @@ import Swal from "sweetalert2";
 const RecipeDetails = () => {
   const { allRecipes, user } = useContext(ContextValues);
   const { id } = useParams();
+  const navigate = useNavigate()
 
   const [recipeDetails, setRecipeDetails] = useState([]);
   useEffect(() => {
@@ -48,13 +50,23 @@ const RecipeDetails = () => {
     }
   };
   return (
-    <div className="flex flex-col items-center md:flex-row gap-6 lg:gap-12 my-12 relative">
+    <div className="py-12">
+      <Link to={'/all-recipes'}>
+      <div onClick={() => navigate(-1)} className="mb-4 text-[var(--color-secondary)] flex items-center gap-2">
+        <div className="flex items-center">
+        <FaChevronLeft size={13}/>
+          <FaChevronLeft />
+        </div>
+        <span className="text-[var(--color-secondary)]">Go Back</span>
+      </div>
+      </Link>
+    <div className="flex flex-col items-center md:flex-row gap-0  sm:gap-4 relative bg-[var(--color-primary)] dark:bg-[var(--color-primary-dark)] text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] rounded-2xl shadow">
       <img
         src={recipeDetails.url}
-        className="w-full md:max-w-[40%]  h-[450px] object-cover rounded-2xl"
+        className="w-full md:max-w-[40%] h-[450px] object-cover rounded-2xl"
         alt=""
       />
-      <div className="flex flex-col gap-2 lg:gap-4 items-start">
+      <div className="flex flex-col gap-2 lg:gap-4 items-start p-4 sm:p-6">
         <div className="flex flex-col gap-1 items-start">
           <span className="btn btn-sm bg-[rgb(93,202,93)] text-white">
             {recipeDetails.cuisineType}
@@ -104,6 +116,7 @@ const RecipeDetails = () => {
           )}
         </div>
       </div>
+    </div>
     </div>
   );
 };

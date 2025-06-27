@@ -25,7 +25,7 @@ const AddRecipe = () => {
     // console.log(recipeDetails);
 
     // add recipe to database
-    fetch("https://recipe-book-app-server-wheat.vercel.app/recipes", {
+    fetch(`${import.meta.env.VITE_api_url}/recipes`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -54,13 +54,13 @@ const AddRecipe = () => {
       });
   };
   return (
-    <div className="mt-8 flex justify-center items-center bg-gray-50 rounded-2xl">
-      <div className="w-full flex flex-col  gap-6 md:gap-8 lg:gap-12  p-6 sm:p-10 md:p-12 lg:p-16">
-        <h2 className="rancho text-3xl font-semibold md:text-4xl text-[#ff3539] text-center">
+    <div className="py-12 flex justify-center items-center max-w-[800px] mx-auto">
+      <div className="bg-[var(--color-primary)] dark:bg-[var(--color-primary-dark)] rounded-2xl w-full flex flex-col gap-6 md:gap-8 p-6 sm:p-8 text-[var(--color-light)] dark:text-[var(--color-text-dark)] shadow">
+        <h2 className="rancho text-3xl font-semibold md:text-4xl text-center">
           Add A Recipe
         </h2>
         <form onSubmit={handleAddRecipeForm}>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 ">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <fieldset>
               <label
                 htmlFor="categories"
@@ -73,11 +73,11 @@ const AddRecipe = () => {
                 type="radio"
                 name="category"
                 value="Breakfast"
-                className="mr-1 mt-2 text-[rgba(0,0,0,0.6)]"
+                className="mr-1 mt-2 "
               />
               <label
                 htmlFor="breakfast"
-                className="mr-3 text-[rgba(0,0,0,0.6)]"
+                className="mr-3"
               >
                 Breakfast
               </label>
@@ -88,7 +88,7 @@ const AddRecipe = () => {
                 defaultChecked="Lunch"
                 className="mr-1"
               />
-              <label htmlFor="Lunch" className="mr-3 text-[rgba(0,0,0,0.6)]">
+              <label htmlFor="Lunch" className="mr-3">
                 Lunch
               </label>
               <input
@@ -97,7 +97,7 @@ const AddRecipe = () => {
                 value="Dinner"
                 className="mr-1"
               />
-              <label htmlFor="Dinner" className="mr-3 text-[rgba(0,0,0,0.6)]">
+              <label htmlFor="Dinner" className="mr-3">
                 Dinner
               </label>
               <input
@@ -106,7 +106,7 @@ const AddRecipe = () => {
                 value="Dessert"
                 className="mr-1"
               />
-              <label htmlFor="Dessert" className="mr-3 text-[rgba(0,0,0,0.6)]">
+              <label htmlFor="Dessert" className="mr-3">
                 Dessert
               </label>
               <input
@@ -115,7 +115,7 @@ const AddRecipe = () => {
                 value="Vegan"
                 className="mr-1"
               />
-              <label htmlFor="Vegan" className="text-[rgba(0,0,0,0.6)]">
+              <label htmlFor="Vegan" className="">
                 Vegan
               </label>
             </fieldset>
@@ -129,16 +129,16 @@ const AddRecipe = () => {
               <select
                 name="cuisineType"
                 id=""
-                className="border px-3 py-[6px] rounded-sm text-[rgba(0,0,0,0.6)]"
+                className="border px-3 py-[6px] rounded-sm"
               >
-                <option defaultValue="Italian" value="Italian">
+                <option defaultValue="Italian" value="Italian" className="bg-gray-600">
                   Italian
                 </option>
-                <option value="Mexican">Mexican</option>
-                <option value="Bengali">Bengali</option>
-                <option value="Indian">Indian</option>
-                <option value="Chinese">Chinese</option>
-                <option value="Others">Others</option>
+                <option value="Mexican" className="bg-gray-600">Mexican</option>
+                <option value="Bengali" className="bg-gray-600">Bengali</option>
+                <option value="Indian" className="bg-gray-600">Indian</option>
+                <option value="Chinese" className="bg-gray-600">Chinese</option>
+                <option value="Others" className="bg-gray-600">Others</option>
               </select>
             </fieldset>
             <fieldset>
@@ -147,7 +147,7 @@ const AddRecipe = () => {
                 type="text"
                 name="recipeName"
                 placeholder="Enter recipe name"
-                className="input w-full"
+                className="input w-full bg-transparent border-[var(--color-text-light)] dark:border-[var(--color-text-dark)] mt-2"
                 required
               />
             </fieldset>
@@ -157,7 +157,7 @@ const AddRecipe = () => {
                 type="text"
                 name="url"
                 placeholder="Enter photo Url"
-                className="input w-full"
+                className="input w-full bg-transparent border-[var(--color-text-light)] dark:border-[var(--color-text-dark)] mt-2"
                 required
               />
             </fieldset>
@@ -167,7 +167,7 @@ const AddRecipe = () => {
                 type="text"
                 name="ingredients"
                 placeholder="Enter recipe ingredients with a comma"
-                className="input w-full"
+                className="input w-full bg-transparent border-[var(--color-text-light)] dark:border-[var(--color-text-dark)] mt-2"
                 required
               />
             </fieldset>
@@ -177,7 +177,7 @@ const AddRecipe = () => {
                 type="number"
                 name="cookingTime"
                 placeholder="Estimated cooking time"
-                className="input w-full"
+                className="input w-full bg-transparent border-[var(--color-text-light)] dark:border-[var(--color-text-dark)] mt-2"
                 required
               />
             </fieldset>
@@ -186,15 +186,14 @@ const AddRecipe = () => {
             <label htmlFor="instructions">Instructions</label>
             <textarea
               name="instructions"
-              rows="7"
               placeholder="Enter cooking instructions"
-              className="textarea w-full"
+              className="textarea w-full bg-transparent border-[var(--color-text-light)] dark:border-[var(--color-text-dark)] mt-2"
               required
             ></textarea>
           </fieldset>
           <button
             type="submit"
-            className="btn bg-[#ff3539] text-white text-lg font-semibold w-full mt-10 rounded-2xl"
+            className="btn bg-[#ff3539] text-white text-lg font-semibold w-full mt-6 rounded-3xl"
           >
             Add Recipe
           </button>

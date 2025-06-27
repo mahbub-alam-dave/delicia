@@ -14,6 +14,9 @@ import ContextProvider from './contexts/ContextProvider.jsx'
 import RecipeDetails from './pages/RecipeDetails.jsx'
 import Loader from './components/Loader.jsx'
 import MyRecipe from './pages/MyRecipe.jsx'
+import Dashboard from './layouts/Dashboard.jsx'
+import MyProfile from './pages/dashboardPages/MyProfile.jsx'
+import Overview from './pages/dashboardPages/overview/Overview.jsx'
 
 const router = createBrowserRouter([
   {
@@ -24,7 +27,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home />,
         hydrateFallbackElement: <Loader />,
-        loader: () => fetch('https://recipe-book-app-server-wheat.vercel.app/top-recipes')
+        loader: () => fetch(`${import.meta.env.VITE_api_url}/top-recipes`)
       },
       {
         path: "all-recipes",
@@ -39,28 +42,44 @@ const router = createBrowserRouter([
         element: <Register />
       },
       {
-        path: "add-recipe",
-        element: <PrivateRoutes> <AddRecipe /></PrivateRoutes>
-      },
-      {
         path: "recipe-details/:id",
         element: <PrivateRoutes> <RecipeDetails /> </PrivateRoutes>
-      },
-      {
-        path: "my-recipes",
-        element: <PrivateRoutes> <MyRecipe /> </PrivateRoutes>
       }
     ]
   },
   {
         path: '*',
         element: <NotFound />
+  },
+  {
+    path: 'dashboard',
+    element: <PrivateRoutes> <Dashboard /> </PrivateRoutes>,
+    children: [
+      {
+        path: 'my-profile',
+        element: <MyProfile />
+      },
+      {
+        index: true,
+        element: <Overview />
+      },
+      {
+        path: "my-recipes",
+        element: <MyRecipe /> 
+      },
+            {
+        path: "add-recipe",
+        element: <AddRecipe />
+      },
+    ]
   }
 ])
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ContextProvider>
+    <div className='dark:bg-gray-900'>
+      <ContextProvider>
       <RouterProvider router={router} />
     </ContextProvider>
+    </div>
   </StrictMode>,
 )

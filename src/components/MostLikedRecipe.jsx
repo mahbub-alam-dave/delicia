@@ -1,63 +1,33 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router";
-import { AiOutlineLike } from "react-icons/ai";
+
 import { ContextValues } from "../contexts/ContextProvider";
-import getRandomButtonColors from "./colorfulButton";
+import RecipeCard from "./RecipeCard";
 
 const MostLikedRecipe = ({ mostLikedRecipes }) => {
 
-  const {lightMode} = useContext(ContextValues)
 
   return (
     <div className="my-12 lg:my-16 flex flex-col items-center gap-8 lg:gap-12">
       <div className="flex flex-col gap-4">
       <h2 className="rancho text-3xl font-semibold md:text-4xl text-[#ff3539] text-center">Most Liked Recipes</h2>
-      <p className={`${lightMode ? "text-[#fff]" : " text-[#1e1e1e]"} text-base md:text-lg text-center`}>Discover the dishes everyone’s raving about! These top-rated recipes are stealing hearts and plates — book your favorite today.</p>
+      <p className={`text-gray-800 dark:text-gray-200 text-base md:text-lg text-center`}>Discover the dishes everyone’s raving about! These top-rated recipes are stealing hearts and plates — book your favorite today.</p>
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 xl:gap-8'>
-      {mostLikedRecipes.map((recipe) => {
-        return (
-          <div
-            key={recipe._id}
-            className={`flex flex-col items-start gap-4 p-4 rounded-2xl ${lightMode ? "bg-gray-900" : "bg-gray-100"}`}
-          >
-            <div className=" w-full h-[300px]">
-              <img
-                className="w-full h-full object-cover rounded-2xl"
-                src={recipe.url}
-                alt={recipe.recipeName}
-              />
-            </div>
-            <span
-              className="btn btn-sm text-white"
-              style={{ backgroundColor: getRandomButtonColors() }}
-            >
-              {recipe.cuisineType}
-            </span>
-            {/* create me a array of 6 color code for button bg for category page. and create a functionality to set bg randomly by that array */}
-            <h2 className={`text-2xl font-bold ${lightMode ? "text-white" : "text-black"}`}>
-              {recipe.recipeName.length < 25
-                ? recipe.recipeName
-                : recipe.recipeName.slice(0, 25) + "..."}
-            </h2>
-            <div className="flex gap-4 sm:gap-5">
-              <div className="flex items-center justify-center btn bg-gray-50 text-base text-black">
-                <span>{recipe.likeCount}</span>
-                <AiOutlineLike size={20} />
-              </div>
-              <Link to={`/recipe-details/${recipe._id}`}>
-                <button className="btn bg-[#ff3539] text-base text-white">
-                  View Details
-                </button>
-              </Link>
-            </div>
-          </div>
-        );
-      })}
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 xl:gap-8'>
+      {mostLikedRecipes.map((recipe) => (
+  <RecipeCard
+    key={recipe._id}
+    recipe={recipe}
+  />
+))}
     </div>
-    <div className="pt-6">
-      <Link to={'/all-recipes'}><button className=" text-lg md:text-xl font-semibold bg-gray-200 text-black hover:bg-[#ff3539] px-4 py-2 rounded-lg sm:px-6 lg:px-8 sm:py-4 hover:text-white">Visit All Recipes</button></Link>
-    </div>
+<div className="pt-6">
+  <Link to="/all-recipes">
+    <button className="text-lg  font-semibold bg-gray-200 text-gray-800 hover:bg-[#ff3539] hover:text-white px-6 py-3  rounded-4xl transition-all duration-300 shadow-sm hover:shadow-lg">
+      Visit All Recipes
+    </button>
+  </Link>
+</div>
     </div>
 
   );

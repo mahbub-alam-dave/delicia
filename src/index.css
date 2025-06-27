@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui";
+@custom-variant dark (&:where(.dark, .dark *));
 
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Rancho&display=swap");
 
@@ -24,5 +25,16 @@ a.active {
 .slick-next {
   display: none !important;
   /* z-index: 10; */
+}
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #f9fafb;
+  --color-primary-dark: #070F2B;
+  --color-secondary: #ff3539;
+  --color-text-light: #1e2939; 
+  --color-text-dark: #e5e7eb;
+  
 }
 
