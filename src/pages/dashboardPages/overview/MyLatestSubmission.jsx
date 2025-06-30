@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { ContextValues } from '../../../contexts/ContextProvider';
-import { format } from 'date-fns';
 import { Link } from 'react-router';
 
 /* const recentRecipes = [

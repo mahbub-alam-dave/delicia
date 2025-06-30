@@ -87,35 +87,35 @@ const Register = () => {
     }
   return (
     <div className="">
-      <div className="card bg-base-100 w-full max-w-md mx-auto shrink-0 shadow-2xl my-12">
+      <div className="card bg-[var(--color-primary)] dark:bg-[var(--color-primary-dark)] text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] w-full max-w-md mx-auto shrink-0 shadow-2xl my-12">
         <div className="card-body">
           <h1 className="text-3xl text-center font-bold">Register now!</h1>
           <form onSubmit={handleUserRegisterForm} className="fieldset">
             <label className="label">Name</label>
             <input
               type="text"
-              className="input w-full "
+              className="input w-full bg-transparent border-[var(--color-text-light)] dark:border-[var(--color-text-dark)]"
               name="name"
               placeholder="Name"
             />
             <label className="label">Photo Url</label>
             <input
               type="text"
-              className="input w-full"
+              className="input w-full bg-transparent border-[var(--color-text-light)] dark:border-[var(--color-text-dark)]"
               name="photo"
               placeholder="Photo Url"
             />
             <label className="label">Email</label>
             <input
               type="email"
-              className="input w-full"
+              className="input w-full bg-transparent border-[var(--color-text-light)] dark:border-[var(--color-text-dark)]"
               name="email"
               placeholder="Email"
             />
             <label className="label">Password</label>
             <input
               type="password"
-              className="input w-full"
+              className="input w-full bg-transparent border-[var(--color-text-light)] dark:border-[var(--color-text-dark)]"
               name="password"
               placeholder="Password"
             />
@@ -123,7 +123,7 @@ const Register = () => {
               <p className='text-red-500'>{validationError}</p>
               <a className="link link-hover">Forgot password?</a>
             </div>
-            <button className="btn btn-neutral mt-4">Register</button>
+            <button className="btn bg-[var(--color-primary-dark)] dark:bg-[var(--color-primary)] text-[var(--color-text-dark)] dark:text-[var(--color-text-light)] mt-4">Register</button>
           </form>
           <p>
             Already have an account?{" "}

@@ -66,28 +66,28 @@ const Login = () => {
     })
   }
   return (
-    <div className="card bg-base-100 w-full max-w-md shrink-0 shadow-2xl mx-auto my-12">
+    <div className="card bg-[var(--color-primary)] dark:bg-[var(--color-primary-dark)] text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] w-full max-w-md shrink-0 shadow-2xl mx-auto my-12">
       <div className="card-body">
         <h1 className="text-3xl text-center font-bold">Login now!</h1>
         <form onSubmit={handleUserLoginForm} className="fieldset">
           <label className="label">Email</label>
           <input
             type="email"
-            className="input w-full"
+            className="input w-full bg-transparent border-[var(--color-text-light)] dark:border-[var(--color-text-dark)]"
             name="email"
             placeholder="Email"
           />
           <label className="label">Password</label>
           <input
             type="password"
-            className="input w-full"
+            className="input w-full bg-transparent border-[var(--color-text-light)] dark:border-[var(--color-text-dark)]"
             name="password"
             placeholder="Password"
           />
           <div>
             <a className="link link-hover">Forgot password?</a>
           </div>
-          <button className="btn btn-neutral mt-4">Login</button>
+          <button className="btn bg-[var(--color-primary-dark)] dark:bg-[var(--color-primary)] text-[var(--color-text-dark)] dark:text-[var(--color-text-light)] mt-4">Login</button>
         </form>
         <p>
           Don't have an account?{" "}

@@ -185,6 +185,9 @@ const Header = () => {
           <NavLink to={"/all-recipes"} className="font-semibold text-base">
             <span>All recipes</span>
           </NavLink>
+          <NavLink to={"/dashboard/add-recipe"} className="font-semibold text-base">
+            <span>Add Recipe</span>
+          </NavLink>
           {user && (
             <>
               <NavLink to={"/dashboard"} className="font-semibold text-base">
