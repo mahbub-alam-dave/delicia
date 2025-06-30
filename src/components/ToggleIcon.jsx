@@ -14,7 +14,7 @@ const ToggleIcon = ({setDisplayMenu, displayMenu}) => {
 
         <div
           onClick={handleChangeMode}
-          className={`tooltip tooltip-right transition-colors duration-300 cursor-pointer ${mode ? "text-yellow-500" : "text-gray-700"}`}
+          className={`tooltip tooltip-right transition-colors duration-300 cursor-pointer flex items-center ${mode ? "text-yellow-500" : "text-gray-700"}`}
           data-tip={mode ? "toggle to light" :"toggle to dark" }
         >
           {mode ? <MdDarkMode size={28}/> : <MdOutlineLightMode size={28}/>}
