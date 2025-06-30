@@ -19,6 +19,7 @@ const AddRecipe = () => {
     // console.log(allIngredients)
     othersData.likeCount = 0;
     othersData.author = { name: user?.displayName, email: user?.email };
+    
 
     const newRecipe = { ...othersData, allIngredients };
 

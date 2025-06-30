@@ -45,10 +45,10 @@ const Dashboard = () => {
         </div>
           {/* Sidebar content here */}
           <li><NavLink className='text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]' to={'/'}>Home</NavLink></li>
-          <li><NavLink className='text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]' to={'/dashboard/my-profile'}>My Profile</NavLink></li>
-          <li><Link className={'text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]'} to={'/dashboard'}>Overview</Link></li>
-          <li><NavLink className={'text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]'} to={'/dashboard/my-recipes'}>My Recipes</NavLink></li>
+          <li><Link className={'text-green-600 font-semibold'} to={'/dashboard'}>Overview</Link></li>
           <li><NavLink className={'text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]'} to={'/dashboard/add-recipe'}>Add Recipe</NavLink></li>
+          <li><NavLink className={'text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]'} to={'/dashboard/my-recipes'}>My Recipes</NavLink></li>
+          <li><NavLink className='text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]' to={'/dashboard/my-profile'}>My Profile</NavLink></li>
         </ul>
       </div>
     </div>

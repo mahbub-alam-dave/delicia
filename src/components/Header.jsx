@@ -90,12 +90,6 @@ const Header = () => {
   const getNavItems = () => {
     return user ? (
       <div className="flex gap-2 items-center">
-          {/* <input
-            type="checkbox"
-            onChange={handleToggleLightMode}
-            defaultChecked="checked"
-            className="hidden lg:toggle border-indigo-600 bg-[#ff3539] checked:border-orange-500 checked:bg-orange-400 checked:text-orange-600"
-          /> */}
           <div className="hidden lg:flex items-center">
             <ToggleIcon
               setDisplayMenu={setDisplayMenu}
@@ -154,12 +148,6 @@ const Header = () => {
             Register
           </button>
         </Link>
-        {/* <input
-          type="checkbox"
-          defaultChecked="checked"
-          onChange={handleToggleLightMode}
-          className="hidden lg:toggle border-indigo-600 bg-[#ff3539] checked:border-orange-500 checked:bg-orange-400 checked:text-orange-600"
-        /> */}
         <div className="hidden lg:block">
           <ToggleIcon
             setDisplayMenu={setDisplayMenu}
@@ -197,14 +185,8 @@ const Header = () => {
           <NavLink to={"/all-recipes"} className="font-semibold text-base">
             <span>All recipes</span>
           </NavLink>
-          {/* <NavLink to={"/add-recipe"} className="font-semibold text-base">
-            <span>Add recipe</span>
-          </NavLink> */}
           {user && (
             <>
-              {/* <NavLink to={"/my-recipes"} className="font-semibold text-base">
-                <span>My Recipes</span>
-              </NavLink> */}
               <NavLink to={"/dashboard"} className="font-semibold text-base">
                 <span>Dashboard</span>
               </NavLink>
@@ -216,9 +198,7 @@ const Header = () => {
           <div className="hidden md:block">{getNavItems()}</div>
           <CiMenuFries
             onClick={handleMenuBtn}
-            className={`text-3xl font-bold block lg:hidden ${
-              lightMode ? "text-white" : "text-black"
-            }`}
+            className={`text-3xl font-bold block lg:hidden text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]`}
           />
         </div>
         <div
@@ -245,28 +225,13 @@ const Header = () => {
             >
               <span>All recipes</span>
             </NavLink>
-            <NavLink
-              onClick={() => setDisplayMenu((display) => !display)}
-              to={"/add-recipe"}
-              className="font-semibold text-base"
-            >
-              <span>Add recipe</span>
-            </NavLink>
             {user && (
-              <NavLink
-                onClick={() => setDisplayMenu((display) => !display)}
-                to={"/my-recipes"}
-                className="font-semibold text-base"
-              >
-                <span>My Recipes</span>
+              <>
+              <NavLink to={"/dashboard"} className="font-semibold text-base">
+                <span>Dashboard</span>
               </NavLink>
+            </>
             )}
-            {/*             <input
-              type="checkbox"
-              defaultChecked="checked"
-              onChange={handleToggleLightMode}
-              className="toggle border-indigo-600 bg-[#ff3539] checked:border-orange-500 checked:bg-orange-400 checked:text-orange-600"
-            /> */}
             <div className="">
               <ToggleIcon
                 setDisplayMenu={setDisplayMenu}
