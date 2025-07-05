@@ -24,6 +24,6 @@
 - etc.
 
 ## live link
-- https://endearing-beijinho-046288.netlify.app/
+- https://fascinating-queijadas-46bd45.netlify.app/
 
 
