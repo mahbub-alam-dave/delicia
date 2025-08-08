@@ -1,29 +1,81 @@
-# Delicia (recipe booking web application)
+# Delicia — Recipe Booking Web Application
 
-* Delicia is a recipe booking web application, showcase delicious recipes all around the world. Delicia has personalized user integration system, where user can have register, log in and log out facilities. User who haven't register or logged in have less features available than the logged in users. 
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://fascinating-queijadas-46bd45.netlify.app/)  
+![License](https://img.shields.io/badge/License-MIT-blue)  
+![React](https://img.shields.io/badge/React-17.0.2-blue?logo=react)  
+![Node.js](https://img.shields.io/badge/Node.js-16-green?logo=node.js)  
+![MongoDB](https://img.shields.io/badge/MongoDB-4.4-green?logo=mongodb)  
+![Firebase](https://img.shields.io/badge/Firebase-yellow?logo=firebase)  
+![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-3.3.2-blue?logo=tailwind-css)  
 
-* Logged in user can explore all the features, routes, recipes details, add recipe etc. The most amazing feature is only for the logged in users is the protected add recipe page where they can add their favorites recipe to the application. Again there is a protected page for the logged in users where they can see all of the recipes they have published previously and they have the scope to edit, manage or delete their own added recipes. 
+---
 
-* There is header and footer common on all routes except the error route. On the home page, there is a custom designed eye-catching banner, 6 most liked recipes showcased at cart format with a view details button on each card. 
+## 📖 Overview
 
-* Clicking to the view details button people who haven't register or logged in will be redirected to the login page, and logged in users will navigate to the recipe details page, also there is a button at the bottom of the 6 recipes which navigates users to the all recipe page, in addition there are two static section before the footer bar. 
+**Delicia** is a dynamic recipe booking web application that showcases delicious recipes from around the world.  
+It features a personalized user integration system with registration, login, and logout functionalities.
 
-* In the all recipe page, all the recipes are showcased beautifully in card format with a view details button on each individual card. Clicking to the view details button, if logged in navigates to recipe details. Otherwise, redirected to the login page. On the recipe details page user can explore all the details to the specific recipe user has clicked. 
+- **Guest Users:** Can browse limited features and view the home page recipes.  
+- **Logged-in Users:** Access full features including exploring all recipes, viewing detailed recipe pages, adding their own recipes, and managing previously published recipes through protected routes.
 
-* In the recipe details there is a like button with the total like count the recipe got. Clicking to the like button 1 added with the total count by each click and instantly show a custom designed modal at the top of the page. User can like to any of the recipe except his own added recipes. 
+Key highlights include a visually appealing home page banner, a showcase of the 6 most-liked recipes, and user-friendly navigation with protected access to detailed and recipe management pages.
 
-## The tools and technologies uses to develop the application:
+---
 
-- html
-- tailwind css
-- react js
-- node js
-- express js
-- mongo db
-- firebase 
-- etc.
+## 🖼 Screenshot
 
-## live link
-- https://fascinating-queijadas-46bd45.netlify.app/
+![Delicia - Home Page](./public/delicia-home.png)  
+*Replace with your actual screenshot image path*
 
+---
 
+## 🔗 Live Demo
+
+- [Delicia Live Site](https://fascinating-queijadas-46bd45.netlify.app/)
+
+---
+
+## 🛠 Technologies Used
+
+- HTML  
+- Tailwind CSS  
+- React.js  
+- Node.js  
+- Express.js  
+- MongoDB  
+- Firebase Authentication  
+
+---
+
+## ✨ Core Features
+
+- 🔒 **User Authentication:** Register, login, and logout via Firebase.  
+- 🍽️ **Recipe Browsing:** View popular recipes on the home page and explore all recipes.  
+- ➕ **Add Recipe:** Protected page for logged-in users to add favorite recipes.  
+- 📋 **Recipe Management:** Logged-in users can view, edit, or delete their own recipes.  
+- ❤️ **Like Functionality:** Users can like recipes (except their own) with live like count updates and custom modal notifications.  
+- 🔄 **Protected Routes:** Only authenticated users can access sensitive pages like add recipe and recipe details.  
+- 🎨 **Custom UI:** Eye-catching banner, recipe cards, modals, and a consistent header/footer (except on error page).  
+
+---
+
+## 📦 Dependencies (high level)
+
+- react  
+- react-router-dom  
+- tailwindcss  
+- axios  
+- firebase  
+- express  
+- mongoose  
+- dotenv  
+
+---
+
+## 🚀 Run Locally — Detailed Setup
+
+### 1. Clone the Repositories
+
+```bash
+git clone [CLIENT_REPO_URL]
+git clone [SERVER_REPO_URL]
